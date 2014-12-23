@@ -1,5 +1,5 @@
 #JUMG ('Jum-Gee')
-##Java Utilities for Making Games
+###Java Utilities for Making Games
 <hr>
 
 ###Contents
@@ -19,10 +19,49 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  3. [ ] Sprite Manager
  4. [ ] Level Manager
  5. [ ] Entities
- 6. [ ] Event Systems
+ 6. [ ] Event System
  7. [ ] RELEASE!
 
 ###Who is BrennyTizer?
 BrennyTizer is not a person, it is merely a blog/portfolio of one's work. That person who's work is being collected is Jarod Brennfleck. He is the guy who is constantly working hard to develop programs while achieving good grades at school. Currently a Year 11 student, Jarod has completed a few programs for some classes which he will be releasing soon online, as soon as his blog becomes live! When it does, you can visit it at http://brennytizer.com.au/.
 
+###Why do I need JUMG?
+You don't * **NEED** * JUMG, it's simply a tool to speed up the process of creating games with Java. JUMG just simplifies the process by extinguishing the boring bits of code from your main class. Consider the following:
 
+```java
+// Without JUMG
+public static void main(String[] args) {
+  Dimension size = new Dimension(600, 500);
+  JFrame jf = new JFrame("Title");
+  jf.setPreferredSize(size);
+  jf.setMinimumSize(size);
+  jf.setMaximumSize(size);
+  jf.setSize(size);
+  jf.setLocationRelativeTo(null);
+  jf.setFocusTraversalKeysEnabled(false);
+  jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  jf.setLayout(new BorderLayout());
+  jf.add(new OverridenPanelWithAwesomeRender(), BorderLayout.CENTER);
+  jf.pack();
+  jf.setVisible(true);
+}
+```
+This clump of code (plus extra, woo!) can be condensed down into just a few lines such as the following:
+```java
+// Using JUMG
+public static void main(String[] args) {
+  Dimension size = new Dimension(600, 500);
+  Frame f = new Frame("Title", size);
+  f.addDisplay(new Display(size, new MyRenderer(), null));
+  f.show(true);
+}
+```
+Now how much of a clamp-down is that?! JUMG just removes the boring code that we all dread to write repeatedly, and plonks it in nice little classes that allow you to have full control of. Yes, that's right. Nothing in JUMG has a private modifier - although it's bad practice - but as far as this library is concerned, there is no need to privatize anything. That frame that just got created in the JUMG example has a public JFrame in it's class. If you don't like it how you can't resize the frame, you can call the `JFrame.setMinimumSize(Dimension)` and `JFrame.setMaximumSize(Dimension)` by using `Frame.frame.set*Size`. Or you can set it to your own customized frame - provided it extends JFrame in some way!
+
+###Extra Notes
+
+JUMG is an open source tool that is freely available for modifications. Take it and throw it into eclipse, but remember that it would be nice that if you muddle around with it, that if you could throw a push request to the current JUMG build, here on GitHub.
+
+JUMG uses the [Gnu GPL](http://www.gnu.org/licenses/gpl-3.0.txt) license to support modification of the works presented in this repository - however one should always remember to not redistribute the works under their name. I mean, come on man, that's not cool. Changes and additions to the works will be credited with a name, date, and a slogan (provided that I approve of the slogan).
+
+On another note about the license, if you need to hit the road but have already downloaded this library, and want to read the license, you can check the LICENSE.md file in the root of the library folder.
