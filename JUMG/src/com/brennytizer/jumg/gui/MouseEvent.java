@@ -18,9 +18,9 @@ import java.awt.Point;
  * @author jarod
  */
 public class MouseEvent {
-	public static final byte LEFT_MOUSE_UP = -3;
+	public static final byte MIDDLE_MOUSE_UP = -3;
 	public static final byte RIGHT_MOUSE_UP = -2;
-	public static final byte MIDDLE_MOUSE_UP = -1;
+	public static final byte LEFT_MOUSE_UP = -1;
 	public static final byte NO_MOUSE_BUTTON = 0;
 	public static final byte LEFT_MOUSE_DOWN = 1;
 	public static final byte RIGHT_MOUSE_DOWN = 2;
