@@ -6,7 +6,8 @@
  1. What is JUMG?
  2. Who is 'BrennyTizer'?
  3. Why do I need JUMG?
- 4. Extra Notes
+ 4. How to use JUMG
+ 5. Extra Notes
 <hr>
 
 ###What is JUMG?
@@ -18,9 +19,10 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  2. [ ] Graphical User Interface utilities (currently working on...)
  3. [ ] Sprite Manager
  4. [ ] Level Manager
- 5. [ ] Entities
- 6. [ ] Event System
- 7. [ ] RELEASE!
+ 5. [ ] Sound Manager
+ 6. [ ] Entities
+ 7. [ ] Event System
+ 8. [ ] RELEASE!
 
 ###Who is BrennyTizer?
 BrennyTizer is not a person, it is merely a blog/portfolio of one's work. That person who's work is being collected is Jarod Brennfleck. He is the guy who is constantly working hard to develop programs while achieving good grades at school. Currently a Year 11 student, Jarod has completed a few programs for some classes which he will be releasing soon online, as soon as his blog becomes live! When it does, you can visit it at http://brennytizer.com.au/.
@@ -57,6 +59,22 @@ public static void main(String[] args) {
 }
 ```
 Now how much of a clamp-down is that?! JUMG just removes the boring code that we all dread to write repeatedly, and plonks it in nice little classes that allow you to have full control of. Yes, that's right. Nothing in JUMG has a private modifier - although it's bad practice - but as far as this library is concerned, there is no need to privatize anything. That frame that just got created in the JUMG example has a public JFrame in it's class. If you don't like it how you can't resize the frame, you can call the `JFrame.setMinimumSize(Dimension)` and `JFrame.setMaximumSize(Dimension)` by using `Frame.frame.set*Size`. Or you can set it to your own customized frame - provided it extends JFrame in some way!
+
+###How to use JUMG
+
+Due to JUMG's unique style of a multi-library mode, you can select which libraries you want to implement. This allows for a slim development of your game - if that's what you're after. There a not many necessities that come when it's time to implement, but one of these is the utils package is a must, no matter what package you're after. The utils package is an all round package which implements the most important tools into the library. The utils package contains methods such as logging, images, and certain units of measurement (which are annoying to implement with java - *cough* angles). But then again, that's what JUMG aims to do. Cut down your boring code so you can work faster.
+
+So if the previous paragraph was a tl;dr for you, here are the simpe steps:
+####If you only want some packages:
+ 1. Copy the `com.brennytizer.jumg.utils` package to your workspace.
+ 2. Copy your wanted packages across.
+ 3. The packages should be available for use!
+####If you want the full library (eclipse):
+ PRE-REQ. Make sure the JUMG Library is a project in your workspace.
+ 1. Right Click your project > Build Path > Configure Build Path...
+ 2. "Projects" tab > "Add..."
+ 3. Tick the JUMG project you have made > OK > OK
+ 4. The packages should be available for use!
 
 ###Extra Notes
 

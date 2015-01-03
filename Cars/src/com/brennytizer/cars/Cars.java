@@ -2,11 +2,11 @@ package com.brennytizer.cars;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.image.BufferedImage;
 
-import com.brennytizer.frame.Display;
-import com.brennytizer.frame.Frame;
-import com.brennytizer.frame.Renderer;
+import com.brennytizer.cars.util.MyImages;
+import com.brennytizer.jumg.frame.Display;
+import com.brennytizer.jumg.frame.Frame;
+import com.brennytizer.jumg.frame.Renderer;
 
 public class Cars {
 	public static final String TITLE = "Cars";
@@ -23,10 +23,11 @@ public class Cars {
 		Dimension size = new Dimension(WIDTH, HEIGHT);
 		frame = new Frame(Cars.TITLE, size);
 		renderer = new MyRenderer();
-		display = new Display(size, renderer, Images.SPLASH_IMAGE);
+		display = new Display(size, renderer, MyImages.SPLASH_IMAGE);
 		display.setBackground(Color.GREEN.darker().darker());
 		frame.addDisplay(display);
 		frame.show(true);
+		display.setSplashImage(null);
 	}
 	
 	public static void main(String[] args) {
