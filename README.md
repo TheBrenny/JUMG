@@ -16,8 +16,8 @@ JUMG (pronounced 'Jum-Gee', acronymed 'Java Utilities for Making Games') is a li
 As JUMG is in development, it is necessary for a checklist to be made of what needs to be added, and what is added. This is here for simplicity's sake:
 <br>**JUMG Development Checklist:**
  1. [x] Frame and Screen implementation
- 2. [ ] Graphical User Interface utilities (currently working on...)
- 3. [ ] Sprite Manager
+ 2. [ ] Graphical User Interface utilities
+ 3. [ ] Sprite Manager (currently working on...)
  4. [ ] Level Manager
  5. [ ] Sound Manager
  6. [ ] Entities
@@ -25,7 +25,7 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  8. [ ] RELEASE!
 
 ###Who is BrennyTizer?
-BrennyTizer is not a person, it is merely a blog/portfolio of one's work. That person who's work is being collected is Jarod Brennfleck. He is the guy who is constantly working hard to develop programs while achieving good grades at school. Currently a Year 11 student, Jarod has completed a few programs for some classes which he will be releasing soon online, as soon as his blog becomes live! When it does, you can visit it at http://brennytizer.com.au/.
+BrennyTizer is not a person, it is merely a blog/portfolio of one's work. That person who's work is being collected is Jarod Brennfleck. He is the guy who is constantly working hard to develop programs while achieving good grades at school. Currently a Year 11 student, Jarod has completed a few programs for some classes which he will be releasing soon online! For all the news and updates, check out his website at http://brennytizer.com.au/.
 
 ###Why do I need JUMG?
 You don't * **NEED** * JUMG, it's simply a tool to speed up the process of creating games with Java. JUMG just simplifies the process by extinguishing the boring bits of code from your main class. Consider the following:
@@ -75,6 +75,8 @@ So if the previous paragraph was a tl;dr for you, here are the simpe steps:
  2. "Projects" tab > "Add..."
  3. Tick the JUMG project you have made > OK > OK
  4. The packages should be available for use!
+
+Note that these methods allow you to alter the packages. If you do, **push a request**!
 
 ###Extra Notes
 
