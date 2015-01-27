@@ -69,6 +69,7 @@ So if the previous paragraph was a tl;dr for you, here are the simpe steps:
  1. Copy the `com.brennytizer.jumg.utils` package to your workspace.
  2. Copy your wanted packages across.
  3. The packages should be available for use!
+
 ####If you want the full library (eclipse):
  PRE-REQ. Make sure the JUMG Library is a project in your workspace.
  1. Right Click your project > Build Path > Configure Build Path...
