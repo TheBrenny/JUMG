@@ -16,13 +16,14 @@ JUMG (pronounced 'Jum-Gee', acronymed 'Java Utilities for Making Games') is a li
 As JUMG is in development, it is necessary for a checklist to be made of what needs to be added, and what is added. This is here for simplicity's sake:
 <br>**JUMG Development Checklist:**
  1. [x] Frame and Screen implementation
- 2. [ ] Graphical User Interface utilities
- 3. [ ] Sprite Manager (currently working on...)
- 4. [ ] Level Manager
- 5. [ ] Sound Manager
- 6. [ ] Entities
- 7. [ ] Event System
- 8. [ ] RELEASE!
+ 2. [ ] Graphical User Interface utilities (will be continued as I go on...)
+ 3. [ ] Engine and cycle system (currently working on...)
+ 4. [x] Sprite Manager
+ 5. [ ] Level Manager
+ 6. [x] Sound Manager
+ 7. [ ] Entities
+ 8. [ ] Event System
+ 9. [ ] RELEASE!
 
 ###Who is BrennyTizer?
 BrennyTizer is not a person, it is merely a blog/portfolio of one's work. That person who's work is being collected is Jarod Brennfleck. He is the guy who is constantly working hard to develop programs while achieving good grades at school. Currently a Year 11 student, Jarod has completed a few programs for some classes which he will be releasing soon online! For all the news and updates, check out his website at http://brennytizer.com.au/.

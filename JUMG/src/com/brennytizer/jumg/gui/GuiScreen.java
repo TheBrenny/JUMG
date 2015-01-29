@@ -8,6 +8,7 @@ public abstract class GuiScreen {
 	
 	public GuiScreen() {
 		components = new ArrayList<GuiComponent>();
+		new GuiComponentObservable();
 	}
 	
 	public void addComponent(GuiComponent guiC) {

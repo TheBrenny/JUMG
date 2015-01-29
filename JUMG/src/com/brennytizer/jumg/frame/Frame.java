@@ -9,6 +9,8 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+import com.brennytizer.jumg.utils.Listener;
+
 /**
  * A Frame class that helps create a JFrame for use when making a game. All
  * methods in here return itself as an object to make for easy method stacking

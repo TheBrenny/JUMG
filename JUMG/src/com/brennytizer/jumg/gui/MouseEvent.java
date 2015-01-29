@@ -2,6 +2,8 @@ package com.brennytizer.jumg.gui;
 
 import java.awt.Point;
 
+import com.brennytizer.jumg.utils.geom.Point2D;
+
 /**
  * <p>
  * A mouse event is an event that stores information about a mouse action when
@@ -25,7 +27,7 @@ public class MouseEvent {
 	public static final byte LEFT_MOUSE_DOWN = 1;
 	public static final byte RIGHT_MOUSE_DOWN = 2;
 	public static final byte MIDDLE_MOUSE_DOWN = 3;
-	public Point location;
+	public Point2D location;
 	public byte mouseButton;
 	public short scrollAmount;
 	
@@ -33,15 +35,15 @@ public class MouseEvent {
 	 * Constructs a new MouseEvent using a location and mouse button and scroll
 	 * amount.
 	 * 
-	 * @param location
+	 * @param point
 	 *        - The location of the mouse when the event occured.
 	 * @param mouseButton
 	 *        - The button pressed or 0 if no button pressed.
 	 * @param scrollAmount
 	 *        - The amount scrolled.
 	 */
-	public MouseEvent(Point location, byte mouseButton, short scrollAmount) {
-		this.location = location;
+	public MouseEvent(Point point, byte mouseButton, short scrollAmount) {
+		this.location = new Point2D(point.x, point.y);
 		this.mouseButton = mouseButton;
 		this.scrollAmount = scrollAmount;
 	}
@@ -49,9 +51,9 @@ public class MouseEvent {
 	/**
 	 * Returns the location of the mouse at the time of the event.
 	 * 
-	 * @return {@link Point} - The location of the mouse.
+	 * @return {@link Point2D} - The location of the mouse.
 	 */
-	public Point getLocation() {
+	public Point2D getLocation() {
 		return location;
 	}
 	

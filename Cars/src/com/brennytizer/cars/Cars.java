@@ -7,6 +7,8 @@ import com.brennytizer.cars.util.MyImages;
 import com.brennytizer.jumg.frame.Display;
 import com.brennytizer.jumg.frame.Frame;
 import com.brennytizer.jumg.frame.Renderer;
+import com.brennytizer.jumg.gui.GuiComponentObservable;
+import com.brennytizer.jumg.utils.Logging;
 
 public class Cars {
 	public static final String TITLE = "Cars";
@@ -20,8 +22,10 @@ public class Cars {
 	
 	public Cars() {
 		if(Cars.INSTANCE == null) Cars.INSTANCE = this;
+		Logging.setLogging(true);
 		Dimension size = new Dimension(WIDTH, HEIGHT);
 		frame = new Frame(Cars.TITLE, size);
+		frame.addListener(new GuiComponentObservable());
 		renderer = new MyRenderer();
 		display = new Display(size, renderer, MyImages.SPLASH_IMAGE);
 		display.setBackground(Color.GREEN.darker().darker());

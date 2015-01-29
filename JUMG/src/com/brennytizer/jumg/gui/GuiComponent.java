@@ -1,8 +1,8 @@
 package com.brennytizer.jumg.gui;
 
-import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.Point;
+
+import com.brennytizer.jumg.utils.geom.Rectangle2D;
 
 /**
  * This class contains the basic variables needed to create a GuiComponent. The
@@ -12,8 +12,7 @@ import java.awt.Point;
  * @author jarod
  */
 public abstract class GuiComponent implements GuiComponentListener {
-	public Point location;
-	public Dimension size;
+	public Rectangle2D boundingBox;
 	
 	/**
 	 * Constructs a new GUI component. The parameters must be of legitimate
@@ -33,14 +32,10 @@ public abstract class GuiComponent implements GuiComponentListener {
 	 *        - Whether this component requires mouse or key interactions.
 	 */
 	public GuiComponent(int x, int y, int width, int height, boolean requiresInput) {
-		this(new Point(x, y), new Dimension(width, height), requiresInput);
-	}
-	
-	public GuiComponent(Point location, Dimension size, boolean requiresInput) {
-		this.location = location;
+		this.boundingBox = new Rectangle2D(x, y, width, height);
 		String error = "";
-		if(size.width <= 0) error += "width (" + size.width + ")";
-		if(size.height <= 0) error += ":height (" + size.height + ")";
+		if(width <= 0) error += "width (" + width + ")";
+		if(height <= 0) error += ":height (" + height + ")";
 		if(!error.equals("")) {
 			String[] errorTmp = error.split(":");
 			String built = errorTmp.length > 1 ? "Sizes " : "Size ";
@@ -53,7 +48,6 @@ public abstract class GuiComponent implements GuiComponentListener {
 			}
 			throw new IndexOutOfBoundsException(built + " are out of range! They must be >= 1!");
 		}
-		this.size = size;
 		if(requiresInput) GuiComponentObservable.addListener(this);
 	}
 	

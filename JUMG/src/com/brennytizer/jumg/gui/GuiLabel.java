@@ -83,14 +83,14 @@ public class GuiLabel extends GuiComponent {
 	 */
 	public void drawColoredString(Graphics2D g2d, Color color) {
 		if(fontMetrics == null || fontMetrics.getFont() != font) fontMetrics = g2d.getFontMetrics(font);
-		this.size.setSize(fontMetrics.stringWidth(text), fontMetrics.getHeight());
+		this.boundingBox.resize(fontMetrics.stringWidth(text), fontMetrics.getHeight());
 		g2d.setFont(font);
 		g2d.setColor(color);
 		String xx = anchor.split(":")[0];
 		String yy = anchor.split(":")[1];
 		int xOffset = xx.equals("right") ? fontMetrics.stringWidth(text) : xx.equals("center") ? fontMetrics.stringWidth(text) / 2 : 0;
 		int yOffset = yy.equals("top") ? fontMetrics.getHeight() : yy.equals("center") ? fontMetrics.getHeight() / 2 : 0;
-		g2d.drawString(text, location.x - xOffset, location.y + yOffset);
+		g2d.drawString(text, boundingBox.x - xOffset, boundingBox.y + yOffset);
 	}
 	
 	/**
