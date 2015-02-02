@@ -8,6 +8,9 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+import com.brennytizer.jumg.utils.Logging;
+import com.brennytizer.jumg.utils.Logging.LoggingSpice;
+
 /**
  * The display is what is used to draw the screen. It can be extended for
  * maximum efficiency for drawing rather than going through an implemented
@@ -33,12 +36,14 @@ public class Display extends JPanel {
 	 *        - The splash image to use.
 	 */
 	public Display(Dimension size, Renderer renderer, BufferedImage splash) {
+		Logging.log(LoggingSpice.MILD, "Creating display.");
 		this.splashImage = splash;
 		this.renderer = renderer;
 		setPreferredSize(size);
 		setMinimumSize(size);
 		setMaximumSize(size);
 		setSize(size);
+		Logging.log(LoggingSpice.MILD, "Display created.");
 	}
 	
 	/**
@@ -49,6 +54,7 @@ public class Display extends JPanel {
 	 *        - The splash image to use.
 	 */
 	public void setSplashImage(BufferedImage splash) {
+		Logging.log(LoggingSpice.MILD, splash == null ? "Removing splash image." : "Setting a splash image.");
 		this.splashImage = splash;
 	}
 	
@@ -102,6 +108,7 @@ public class Display extends JPanel {
 	 */
 	public void setBackground(Color color) {
 		super.setBackground(color);
+		Logging.log(LoggingSpice.MILD, "Setting background color to: " + Integer.toHexString(color.getRGB()));
 		this.backgroundColor = color;
 	}
 	
@@ -112,6 +119,7 @@ public class Display extends JPanel {
 	 *        - The main renderer.
 	 */
 	public void setRenderer(Renderer renderer) {
+		Logging.log(LoggingSpice.MILD, "Attaching renderer.");
 		this.renderer = renderer;
 	}
 }

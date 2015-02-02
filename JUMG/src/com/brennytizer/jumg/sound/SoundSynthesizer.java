@@ -81,6 +81,7 @@ public class SoundSynthesizer {
 	 *         the bitmask for the channel.
 	 */
 	public static boolean channelCharacteristics(int channelIndex, byte bits) {
+		Logging.log(LoggingSpice.MILD, "Altering Channel (S/O/Mu/Mo): " + Integer.toBinaryString(bits));
 		MidiChannel channel = midiSynthesizer.getChannels()[channelIndex];
 		byte channelBits = 0;
 		if(channel.getSolo()) channelBits += 0b0001;
@@ -103,6 +104,7 @@ public class SoundSynthesizer {
 	 *        - The distance to bend.
 	 */
 	public static void setPitchBend(int channelIndex, float distance) {
+		Logging.log(LoggingSpice.MILD, "Bending pitch: " + distance);
 		distance = Math.clampFloat(distance, -64F, 64F);
 		midiSynthesizer.getChannels()[channelIndex].setPitchBend((int) (distance * 128.0F));
 	}
@@ -128,6 +130,7 @@ public class SoundSynthesizer {
 	 *        - Whether or not to cut all sound in the channel.
 	 */
 	public static void cutAllNotes(int channelIndex, boolean allSound) {
+		Logging.log(LoggingSpice.MILD, "Cutting all notes" + (allSound ? " to power off" : "") + ".");
 		MidiChannel channel = midiSynthesizer.getChannels()[channelIndex];
 		channel.allNotesOff();
 		if(allSound) channel.allSoundOff();
@@ -140,13 +143,16 @@ public class SoundSynthesizer {
 	 *         error.
 	 */
 	public static boolean acquireSynthesizer() {
+		Logging.log(LoggingSpice.MILD, "Attempting to acquire synthesizer...");
 		try {
 			SoundSynthesizer.midiSynthesizer = MidiSystem.getSynthesizer();
 			midiSynthesizer.open();
 		} catch(MidiUnavailableException e) {
 			e.printStackTrace();
+			Logging.log(LoggingSpice.HOT, "Oh oh! Couldn't acquire the synthesizer.");
 			return false;
 		}
+		Logging.log(LoggingSpice.MILD, "Success! Synthesizer acquired.");
 		return true;
 	}
 	

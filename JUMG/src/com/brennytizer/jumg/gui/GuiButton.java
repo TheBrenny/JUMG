@@ -3,11 +3,12 @@ package com.brennytizer.jumg.gui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 import com.brennytizer.jumg.utils.Images;
 import com.brennytizer.jumg.utils.Logging;
-import com.brennytizer.jumg.utils.Sprite;
 import com.brennytizer.jumg.utils.Logging.LoggingSpice;
+import com.brennytizer.jumg.utils.Sprite;
 
 public class GuiButton extends GuiComponent {
 	public static final Runnable DEFAULT_ACTION = new Runnable() {
@@ -16,7 +17,6 @@ public class GuiButton extends GuiComponent {
 		}
 	};
 	public static final Sprite[][][] BUTTON_SPRITES;
-	public Sprite image = Images.getSprite(Images.GUI_BUTTON, 0, 0, 30, 30);
 	public GuiLabel text;
 	public int state = 0;
 	public Runnable action = DEFAULT_ACTION;
@@ -45,19 +45,23 @@ public class GuiButton extends GuiComponent {
 	
 	public void onMouseMove(MouseEvent e) {
 		if(state == -1) return;
-		if(this.boundingBox.contains(e.location)) state = 1;
+		if(this.boundingBox.contains(e.location)){
+			if(state != 2) state = 1;
+		}
 		else state = 0;
 	}
 	
 	public void onMouseButton(MouseEvent e) {
-		if(this.boundingBox.contains(e.location) && state == 2 && e.mouseButton == MouseEvent.LEFT_MOUSE_UP);
+		if(this.boundingBox.contains(e.location) && state == 2 && e.mouseButton == MouseEvent.LEFT_MOUSE_UP) {
+			action.run();
+			state = 1;
+		}
 		if(state == -1) return;
 		if(state == 1 && e.mouseButton == MouseEvent.LEFT_MOUSE_DOWN) state = 2;
 	}
 	
 	public GuiButton lock(boolean flag) {
 		state = flag ? -1 : 0;
-		image.updateData(image.getMap(), 30 * (flag ? 2 : 0), 0);
 		return this;
 	}
 	public GuiButton onAction(Runnable runnable) {
@@ -65,9 +69,14 @@ public class GuiButton extends GuiComponent {
 		return this;
 	}
 	static {
+		Logging.log(LoggingSpice.MILD, "Loading button sprites.");
 		BUTTON_SPRITES = new Sprite[3][3][3];
+		String ip = Images.IMAGE_PACKAGE;
+		Images.IMAGE_PACKAGE = "/com/brennytizer/jumg/gui/images/";
+		BufferedImage buttonImage = Images.getImage("gui_button");
 		for(int x = 0, y = 0, b = 0; b < 3; x++, y += x / 3, x%= 3, b += y / 3, y %= 3) {
-			BUTTON_SPRITES[b][y][x] = new Sprite(Images.getSprite(Images.GUI_BUTTON, b * 30, 0, 30, 30), x * 10, y * 10, 10, 10);
+			BUTTON_SPRITES[b][y][x] = new Sprite(Images.getSprite(buttonImage, b * 30, 0, 30, 30), x * 10, y * 10, 10, 10);
 		}
+		Images.IMAGE_PACKAGE = ip;
 	}
 }

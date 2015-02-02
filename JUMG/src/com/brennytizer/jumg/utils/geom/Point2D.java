@@ -74,4 +74,6 @@ public class Point2D extends java.awt.geom.Point2D.Float {
 		Rectangle2D rect = new Rectangle2D(this.x - range, this.y - range, range * 2, range * 2);
 		return rect.contains(new Point2D(x, y));
 	}
+	
+	
 }

@@ -3,7 +3,6 @@ package com.brennytizer.jumg.sound;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -34,6 +33,7 @@ public class SoundPlayer {
 	 *        - Whether or not the file is in the jar.
 	 */
 	public static void playMidiSong(String file, boolean inJar) {
+		Logging.log(LoggingSpice.MILD, "Attempting to play song: " + file.substring(file.indexOf("/")));
 		try {
 			InputStream inStream = null;
 			if(inJar) {
@@ -41,17 +41,15 @@ public class SoundPlayer {
 			} else {
 				inStream = new BufferedInputStream(new FileInputStream(new File(file)));
 			}
-			if(midiSequencer != null && !isSequencerPlaying()) {
+			if(midiSequencer != null && !isSequencerPlaying() && midiSequencer.isOpen()) {
 				midiSequencer.setSequence(inStream);
 				midiSequencer.start();
+				Logging.log(LoggingSpice.MILD, "Success! Song is playing.");
 			}
 			if(inStream != null) inStream.close();
-		} catch(FileNotFoundException e) {
+		} catch(IOException | InvalidMidiDataException e) {
 			e.printStackTrace();
-		} catch(IOException e) {
-			e.printStackTrace();
-		} catch(InvalidMidiDataException e) {
-			e.printStackTrace();
+			Logging.log(LoggingSpice.HOT, "Oh oh! The song didn't play!.");
 		}
 	}
 	
@@ -66,6 +64,7 @@ public class SoundPlayer {
 	 * Stops the playback of the midi song.
 	 */
 	public static void stopMidiSong() {
+		Logging.log(LoggingSpice.MILD, "Stopping midi song.");
 		midiSequencer.stop();
 	}
 	
@@ -76,6 +75,7 @@ public class SoundPlayer {
 	 *        - The amount of times to loop.
 	 */
 	public static void setLoopCount(int loops) {
+		Logging.log(LoggingSpice.MILD, "Setting loop count to: " + loops);
 		midiSequencer.setLoopCount(loops);
 	}
 	
@@ -85,18 +85,20 @@ public class SoundPlayer {
 	 * @return True if the sequencer was acquired, false if there was an error.
 	 */
 	public static boolean acquireSequencer() {
+		Logging.log(LoggingSpice.MILD, "Attempting to acquire Midi Sequencer...");
 		try {
 			SoundPlayer.midiSequencer = MidiSystem.getSequencer();
 			SoundPlayer.midiSequencer.open();
 		} catch(MidiUnavailableException e) {
 			e.printStackTrace();
+			Logging.log(LoggingSpice.HOT, "Oh oh! Couldn't acquire the sequencer.");
 			return false;
 		}
+		Logging.log(LoggingSpice.MILD, "Success! Sequencer acquired.");
 		return true;
 	}
 	
 	static {
-		boolean acquired = acquireSequencer();
-		Logging.log(acquired ? LoggingSpice.MILD : LoggingSpice.HOT, "Sequencer acquired: " + acquired);
+		acquireSequencer();
 	}
 }

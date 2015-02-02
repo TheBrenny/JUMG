@@ -10,6 +10,8 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 import com.brennytizer.jumg.utils.Listener;
+import com.brennytizer.jumg.utils.Logging;
+import com.brennytizer.jumg.utils.Logging.LoggingSpice;
 
 /**
  * A Frame class that helps create a JFrame for use when making a game. All
@@ -33,6 +35,7 @@ public class Frame {
 	 *        - The size of the JFrame.
 	 */
 	public Frame(String title, Dimension size) {
+		Logging.log(LoggingSpice.MILD, "Creating frame.");
 		this.title = title;
 		this.size = size;
 		frame = new JFrame(title);
@@ -43,6 +46,7 @@ public class Frame {
 		frame.setLocationRelativeTo(null);
 		frame.setFocusTraversalKeysEnabled(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Logging.log(LoggingSpice.MILD, "Frame created.");
 	}
 	
 	/**
@@ -53,6 +57,7 @@ public class Frame {
 	 * @return Itself - The {@link Frame} instantiated.
 	 */
 	public Frame addListener(Listener l) {
+		Logging.log(LoggingSpice.MILD, "Adding listener: " + l.getClass().getName());
 		frame.addMouseListener(l);
 		frame.addMouseMotionListener(l);
 		frame.addMouseWheelListener(l);
@@ -68,6 +73,7 @@ public class Frame {
 	 * @return Itself - The {@link Frame} instantiated.
 	 */
 	public Frame addDisplay(Display d) {
+		Logging.log(LoggingSpice.MILD, "Adding display: " + d.getClass().getName());
 		frame.getContentPane().add(d, BorderLayout.CENTER);
 		return this;
 	}
@@ -80,6 +86,7 @@ public class Frame {
 	 * @return Itself - The {@link Frame} instantiated.
 	 */
 	public Frame show(boolean flag) {
+		Logging.log(LoggingSpice.MILD, flag ? "Showing frame." : "Hiding frame.");
 		frame.pack();
 		frame.setVisible(flag);
 		return this;
@@ -97,6 +104,7 @@ public class Frame {
 	 * @return Itself.
 	 */
 	public Frame setCursor(Image cursor, Point hotspot, String name) {
+		Logging.log(LoggingSpice.MILD, "Setting cursor to: " + name);
 		Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(cursor, hotspot, name);
 		frame.setCursor(c);
 		return this;

@@ -17,13 +17,14 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
 <br>**JUMG Development Checklist:**
  1. [x] Frame and Screen implementation
  2. [ ] Graphical User Interface utilities (will be continued as I go on...)
- 3. [ ] Engine and cycle system (currently working on...)
+ 3. [x] Engine and cycle system
  4. [x] Sprite Manager
- 5. [ ] Level Manager
+ 5. [ ] Level Manager (currently working on...)
  6. [x] Sound Manager
  7. [ ] Entities
  8. [ ] Event System
- 9. [ ] RELEASE!
+ 9. [ ] Networking
+ 10. [ ] RELEASE!
 
 ###Who is BrennyTizer?
 BrennyTizer is not a person, it is merely a blog/portfolio of one's work. That person who's work is being collected is Jarod Brennfleck. He is the guy who is constantly working hard to develop programs while achieving good grades at school. Currently a Year 11 student, Jarod has completed a few programs for some classes which he will be releasing soon online! For all the news and updates, check out his website at http://brennytizer.com.au/.
@@ -65,7 +66,7 @@ Now how much of a clamp-down is that?! JUMG just removes the boring code that we
 
 Due to JUMG's unique style of a multi-library mode, you can select which libraries you want to implement. This allows for a slim development of your game - if that's what you're after. There a not many necessities that come when it's time to implement, but one of these is the utils package is a must, no matter what package you're after. The utils package is an all round package which implements the most important tools into the library. The utils package contains methods such as logging, images, and certain units of measurement (which are annoying to implement with java - *cough* angles). But then again, that's what JUMG aims to do. Cut down your boring code so you can work faster.
 
-So if the previous paragraph was a tl;dr for you, here are the simpe steps:
+So if the previous paragraph was a tl;dr for you, here are the simple steps:
 ####If you only want some packages:
  1. Copy the `com.brennytizer.jumg.utils` package to your workspace.
  2. Copy your wanted packages across.
@@ -73,12 +74,12 @@ So if the previous paragraph was a tl;dr for you, here are the simpe steps:
 
 ####If you want the full library (eclipse):
  PRE-REQ. Make sure the JUMG Library is a project in your workspace.
- 1. Right Click your project > Build Path > Configure Build Path...
+ 1. Right Click your project > "Build Path" > "Configure Build Path..."
  2. "Projects" tab > "Add..."
  3. Tick the JUMG project you have made > OK > OK
  4. The packages should be available for use!
 
-Note that these methods allow you to alter the packages. If you do, **push a request**!
+Note that these methods allow you to alter the packages, for your own personalization benefits, or to improve on JUMG. If you do make an improvement or addition that is not personalized, **push a request**!
 
 ###Extra Notes
 

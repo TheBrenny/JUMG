@@ -24,7 +24,17 @@ public class Logging {
 	 *        - What you want the message to say.
 	 */
 	public static void log(LoggingSpice spice, String message) {
-		if(shouldLog) System.out.println("[" + spice.getWarning() + "] > " + message);
+		if(shouldLog) {
+			StackTraceElement ste = Thread.currentThread().getStackTrace()[2];
+			String className = ste.getClassName();
+			String[] asd = className.split("\\.");
+			className = asd[asd.length - 1];
+			className = Words.padTo(className, 15, " ");
+			String methodName = ste.getMethodName();
+			String info = "[" + Words.padTo(Thread.currentThread().getName(), 7, " ") + ":" + className.trim() + "." + methodName;
+			info = Words.padTo(info, 20, " ");
+			System.out.println(info + "]-[" + spice.getWarning() + "] > " + message);
+		}
 		if(spice == LoggingSpice.DEADLY) {
 			System.exit(1);
 		}

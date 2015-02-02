@@ -4,6 +4,8 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
+import com.brennytizer.jumg.utils.Logging.LoggingSpice;
+
 /**
  * This class is dedicated to loading images. Extending this class will allow
  * for better intergration.
@@ -14,10 +16,9 @@ public class Images {
 	/**
 	 * The package to retrieve images from.
 	 */
-	public static String IMAGE_PACKAGE = "/com/brennytizer/jumg/gui/images/";
-	public static BufferedImage GUI_BUTTON;
+	public static String IMAGE_PACKAGE = "/com/brennytizer/jumg/utils/";
 	static {
-		GUI_BUTTON = getImage("gui_button");
+		Logging.log(LoggingSpice.MILD, "Loading images");
 	}
 	
 	/**
