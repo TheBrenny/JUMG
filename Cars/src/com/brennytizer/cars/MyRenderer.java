@@ -3,15 +3,16 @@ package com.brennytizer.cars;
 import java.awt.Graphics2D;
 
 import com.brennytizer.jumg.frame.Renderer;
+import com.brennytizer.jumg.gui.GuiScreen;
 
 public class MyRenderer implements Renderer {
-	public GuiMainMenu mainMenu;
+	public GuiScreen screen;
 	
 	public MyRenderer() {
-		mainMenu = new GuiMainMenu();
+		screen = new GuiMainMenu();
 	}
 	
 	public void draw(Graphics2D g2d) {
-		mainMenu.draw(g2d);
+		screen.draw(g2d);
 	}
 }

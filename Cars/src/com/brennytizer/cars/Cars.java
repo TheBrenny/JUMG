@@ -3,7 +3,6 @@ package com.brennytizer.cars;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import com.brennytizer.cars.engine.MyEngine;
 import com.brennytizer.cars.util.MyImages;
 import com.brennytizer.jumg.frame.Display;
 import com.brennytizer.jumg.frame.Frame;

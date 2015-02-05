@@ -6,16 +6,20 @@ import com.brennytizer.jumg.utils.Logging.LoggingSpice;
 public abstract class Engine implements Runnable {
 	public static int TICKS_PS = 0;
 	public static int FRAMES_PS = 0;
+	public static Engine INSTANCE;
 	public boolean running = false;
 	public Thread thread;
 	public int maxTPS;
+	public int threadTimeout;
 	
 	public Engine() {
-		this(60);
+		this(60, 15);
 	}
-	public Engine(int maxTPS) {
+	public Engine(int maxTPS, int threadTimeout) {
 		Logging.log(LoggingSpice.MILD, "Making an engine with max ticks: " + maxTPS);
+		Engine.INSTANCE = this;
 		this.maxTPS = maxTPS;
+		this.threadTimeout = threadTimeout;
 	}
 	
 	public void run() {
@@ -55,6 +59,11 @@ public abstract class Engine implements Runnable {
 				frames = 0;
 				ticks = 0;
 			}
+			try {
+				Thread.sleep(threadTimeout);
+			} catch(InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 		System.exit(0);
 	}
@@ -64,5 +73,9 @@ public abstract class Engine implements Runnable {
 		thread = new Thread(this, "Engine Thread");
 		thread.start();
 		return thread;
+	}
+	public void stop() {
+		Logging.log(LoggingSpice.MILD, "Stopping engine...");
+		running = false;
 	}
 }

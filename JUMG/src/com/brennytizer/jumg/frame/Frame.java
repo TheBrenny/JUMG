@@ -6,12 +6,15 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 
 import com.brennytizer.jumg.utils.Listener;
 import com.brennytizer.jumg.utils.Logging;
 import com.brennytizer.jumg.utils.Logging.LoggingSpice;
+import com.brennytizer.jumg.utils.engine.Engine;
 
 /**
  * A Frame class that helps create a JFrame for use when making a game. All
@@ -46,6 +49,7 @@ public class Frame {
 		frame.setLocationRelativeTo(null);
 		frame.setFocusTraversalKeysEnabled(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.addWindowListener(new WinListen());
 		Logging.log(LoggingSpice.MILD, "Frame created.");
 	}
 	
@@ -109,4 +113,18 @@ public class Frame {
 		frame.setCursor(c);
 		return this;
 	}
+	
+	//@formatter:off
+	public class WinListen implements WindowListener {
+		public void windowOpened(WindowEvent e) {}
+		public void windowClosing(WindowEvent e) {
+			if(Engine.INSTANCE != null) Engine.INSTANCE.stop();
+		}
+		public void windowClosed(WindowEvent e) {}
+		public void windowIconified(WindowEvent e) {}
+		public void windowDeiconified(WindowEvent e) {}
+		public void windowActivated(WindowEvent e) {}
+		public void windowDeactivated(WindowEvent e) {}
+	}
+	//@formatter:on
 }
