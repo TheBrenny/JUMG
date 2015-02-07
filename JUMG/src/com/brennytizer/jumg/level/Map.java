@@ -34,11 +34,11 @@ public class Map implements TileBasedMap {
 	
 	public void render(Graphics2D g2d, float xOffset, float yOffset, int boardWidth, int boardHeight, float scale) {
 		float tileSize = this.tileSize * scale;
-		xOffset = xOffset < 0 ? 0 : xOffset > tiles[0].length * tileSize ? tiles[0].length * tileSize : xOffset;
-		yOffset = yOffset < 0 ? 0 : yOffset > tiles.length * tileSize ? tiles.length * tileSize : yOffset;
+		xOffset = xOffset < 0 ? 0 : xOffset + boardWidth > tiles[0].length * tileSize ? tiles[0].length * tileSize - boardWidth : xOffset;
+		yOffset = yOffset < 0 ? 0 : yOffset + boardHeight > tiles.length * tileSize ? tiles.length * tileSize - boardHeight : yOffset;
 		for(int x = 0, y = 0; y < tiles.length; x++, y += x / tiles[0].length, x %= tiles[0].length) {
 			if(x * tileSize + tileSize >= xOffset && y * tileSize + tileSize >= yOffset && x * tileSize <= xOffset + boardWidth && y * tileSize <= yOffset + boardHeight) {
-				g2d.drawImage(tiles[y][x].tileSprite, (int) (x * tileSize), (int) (y * tileSize), (int) tileSize, (int) tileSize, null);
+				g2d.drawImage(tiles[y][x].tileSprite, (int) (x * tileSize - xOffset), (int) (y * tileSize - yOffset), (int) tileSize, (int) tileSize, null);
 			}
 		}
 		renderRenderables(g2d, this.renderables, xOffset, yOffset, boardWidth, boardHeight, scale);

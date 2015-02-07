@@ -21,8 +21,8 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  4. [x] Sprite Manager
  5. [x] Level Manager
  6. [x] Sound Manager
- 7. [ ] Key Bindings (currently working on...)
- 8. [ ] Entities
+ 7. [x] Key Bindings
+ 8. [ ] Entities (currently working on...)
  9. [ ] Event System
  10. [ ] Networking
  11. [ ] RELEASE!

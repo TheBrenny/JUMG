@@ -2,12 +2,14 @@ package com.brennytizer.cars;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 
 import com.brennytizer.cars.util.MyImages;
 import com.brennytizer.jumg.frame.Display;
 import com.brennytizer.jumg.frame.Frame;
-import com.brennytizer.jumg.frame.Renderer;
 import com.brennytizer.jumg.gui.GuiComponentObservable;
+import com.brennytizer.jumg.keybinds.Key;
+import com.brennytizer.jumg.keybinds.KeyBindings;
 import com.brennytizer.jumg.utils.Logging;
 import com.brennytizer.jumg.utils.engine.Engine;
 
@@ -19,7 +21,7 @@ public class Cars {
 	
 	public Frame frame;
 	public Display display;
-	public Renderer renderer;
+	public MyRenderer renderer;
 	public Engine engine;
 	
 	public Cars() {
@@ -36,6 +38,18 @@ public class Cars {
 		frame.show(true);
 		display.setSplashImage(null);
 		engine.start();
+		addInputs();
+	}
+	public void addInputs() {
+		frame.addListener(new KeyBindings());
+		KeyBindings.addInput(new Key("UP", KeyEvent.VK_W, false));
+		KeyBindings.addInput(new Key("DOWN", KeyEvent.VK_S, false));
+		KeyBindings.addInput(new Key("LEFT", KeyEvent.VK_A, false));
+		KeyBindings.addInput(new Key("RIGHT", KeyEvent.VK_D, false));
+	}
+	
+	public void tick() {
+		renderer.tick();
 	}
 	
 	public static void main(String[] args) {
