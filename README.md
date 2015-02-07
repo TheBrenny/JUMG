@@ -20,12 +20,13 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  3. [x] Engine and cycle system
  4. [x] Sprite Manager
  5. [x] Level Manager
- 6. [x] Sound Manager
- 7. [x] Key Bindings
- 8. [ ] Entities (currently working on...)
- 9. [ ] Event System
- 10. [ ] Networking
- 11. [ ] RELEASE!
+ 6. [ ] Perfect A* Pathfinding
+ 7. [x] Sound Manager
+ 8. [x] Key Bindings
+ 9. [ ] Entities (currently working on...)
+ 10. [ ] Event System
+ 11. [ ] Networking
+ 12. [ ] RELEASE!
 
 ###Who is BrennyTizer?
 BrennyTizer is not a person, it is merely a blog/portfolio of one's work. That person who's work is being collected is Jarod Brennfleck. He is the guy who is constantly working hard to develop programs while achieving good grades at school. Currently a Year 11 student, Jarod has completed a few programs for some classes which he will be releasing soon online! For all the news and updates, check out his website at http://brennytizer.com.au/.
