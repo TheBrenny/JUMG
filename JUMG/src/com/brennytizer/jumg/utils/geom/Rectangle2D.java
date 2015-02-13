@@ -4,7 +4,7 @@ package com.brennytizer.jumg.utils.geom;
  * A class that allows for the creation and tracking of rectangles in a 2D
  * space, to float accuracy.
  * 
- * @author jarod
+ * @author Jarod Brennfleck
  */
 public class Rectangle2D extends java.awt.geom.Rectangle2D.Float {
 	private static final long serialVersionUID = 1L;

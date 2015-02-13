@@ -8,7 +8,7 @@ import java.awt.Graphics2D;
 /**
  * A GuiLabel is essentially, just a label of text that is drawn.
  * 
- * @author jarod
+ * @author Jarod Brennfleck
  */
 public class GuiLabel extends GuiComponent {
 	public String text;
@@ -48,16 +48,16 @@ public class GuiLabel extends GuiComponent {
 	 * "center:center"
 	 * </pre>
 	 */
-	public String anchor = "left:top";
+	public String[] anchor = {"left", "top"};
 	public Color color = Color.BLACK;
 	
 	/**
 	 * Constructs a new label at the x, y and anchor using the font given.
 	 * 
 	 * @param x
-	 *        - The x position wanted.
+	 *        - The x position of the anchor.
 	 * @param y
-	 *        - The y position wanted.
+	 *        - The y position of the anchor.
 	 * @param text
 	 *        - The text to be displayed.
 	 * @param font
@@ -69,7 +69,7 @@ public class GuiLabel extends GuiComponent {
 		super(x, y, 1, 1, false);
 		this.text = text;
 		this.font = font;
-		if(anchor.contains(":")) this.anchor = anchor;
+		if(anchor.contains(":")) this.anchor = anchor.split(":");
 	}
 	
 	/**
@@ -82,15 +82,28 @@ public class GuiLabel extends GuiComponent {
 	 *        - The color to draw with.
 	 */
 	public void drawColoredString(Graphics2D g2d, Color color) {
+		if(font == null) return;
 		if(fontMetrics == null || fontMetrics.getFont() != font) fontMetrics = g2d.getFontMetrics(font);
 		this.boundingBox.resize(fontMetrics.stringWidth(text), fontMetrics.getHeight());
 		g2d.setFont(font);
 		g2d.setColor(color);
-		String xx = anchor.split(":")[0];
-		String yy = anchor.split(":")[1];
-		int xOffset = xx.equals("right") ? fontMetrics.stringWidth(text) : xx.equals("center") ? fontMetrics.stringWidth(text) / 2 : 0;
-		int yOffset = yy.equals("top") ? fontMetrics.getHeight() : yy.equals("center") ? fontMetrics.getHeight() / 2 : 0;
-		g2d.drawString(text, boundingBox.x - xOffset, boundingBox.y + yOffset);
+		g2d.drawString(text, getX(), getY());
+	}
+	
+	/**
+	 * Returns the x position, taking into account of where the anchor is positioned.
+	 */
+	public float getX() {
+		float xOff = anchor[0].equalsIgnoreCase("right") ? fontMetrics.stringWidth(text) : anchor[0].equalsIgnoreCase("center") ? fontMetrics.stringWidth(text) / 2 : 0;
+		return boundingBox.x - xOff;
+	}
+	
+	/**
+	 * Returns the y position, taking into account of where the anchor is positioned.
+	 */
+	public float getY() {
+		float yOff = anchor[1].equalsIgnoreCase("top") ? fontMetrics.getHeight() : anchor[1].equalsIgnoreCase("center") ? fontMetrics.getHeight() / 2 : 0;
+		return boundingBox.y + yOff;
 	}
 	
 	/**
@@ -140,7 +153,7 @@ public class GuiLabel extends GuiComponent {
 	 * @see #anchor
 	 */
 	public String getAnchor() {
-		return this.anchor;
+		return this.anchor[0] + ":" + this.anchor[1];
 	}
 	
 	/**
@@ -180,7 +193,7 @@ public class GuiLabel extends GuiComponent {
 	 * @see #anchor
 	 */
 	public void setAnchor(String anchor) {
-		if(anchor.contains(":")) this.anchor = anchor;
+		if(anchor.contains(":")) this.anchor = anchor.split(":");
 	}
 	
 	/**

@@ -1,5 +1,10 @@
 package com.brennytizer.jumg.utils;
 
+/**
+ * This class takes care of printing to the console... pretty much it.
+ * 
+ * @author Jarod Brennfleck
+ */
 public class Logging {
 	public static boolean shouldLog = false;
 	
@@ -29,10 +34,10 @@ public class Logging {
 			String className = ste.getClassName();
 			String[] asd = className.split("\\.");
 			className = asd[asd.length - 1];
-			className = Words.padTo(className, 15, " ");
+			className = Words.padTo(className, 15, " ", true);
 			String methodName = ste.getMethodName();
-			String info = "[" + Words.padTo(Thread.currentThread().getName(), 7, " ") + ":" + className.trim() + "." + methodName;
-			info = Words.padTo(info, 20, " ");
+			String info = "[" + Words.padTo(Thread.currentThread().getName(), 7, " ", true) + ":" + className.trim() + "." + methodName;
+			info = Words.padTo(info, 20, " ", true);
 			System.out.println(info + "]-[" + spice.getWarning() + "] > " + message);
 		}
 		if(spice == LoggingSpice.DEADLY) {
@@ -44,7 +49,7 @@ public class Logging {
 	 * The different categories of spiciness for logging different bits of
 	 * information.
 	 * 
-	 * @author jarod
+	 * @author Jarod Brennfleck
 	 */
 	public static enum LoggingSpice {
 		MILD("information     "),

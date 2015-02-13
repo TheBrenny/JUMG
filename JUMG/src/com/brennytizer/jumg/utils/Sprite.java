@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
  * This class specifically extends the BufferedImage class to allow for direct
  * access to the drawing methods.
  * 
- * @author Jarod
+ * @author Jarod Brennfleck
  */
 public class Sprite extends BufferedImage {
 	public BufferedImage map;

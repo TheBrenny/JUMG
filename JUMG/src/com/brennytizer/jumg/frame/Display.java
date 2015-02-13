@@ -16,7 +16,7 @@ import com.brennytizer.jumg.utils.Logging.LoggingSpice;
  * maximum efficiency for drawing rather than going through an implemented
  * {@link Renderer#draw(Graphics2D)} method.
  * 
- * @author jarod
+ * @author Jarod Brennfleck
  */
 public class Display extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -47,18 +47,6 @@ public class Display extends JPanel {
 	}
 	
 	/**
-	 * Sets the splash image to display. Use {@code null} as the parameter to
-	 * hid the splash image and show what the {@link Renderer} wants to draw.
-	 * 
-	 * @param splash
-	 *        - The splash image to use.
-	 */
-	public void setSplashImage(BufferedImage splash) {
-		Logging.log(LoggingSpice.MILD, splash == null ? "Removing splash image." : "Setting a splash image.");
-		this.splashImage = splash;
-	}
-	
-	/**
 	 * Overrides the {@link JPanel#paint(Graphics)} method to ensure that if
 	 * {@link JPanel#repaint()} is called (such as from an engine (hint,
 	 * hint...)) then the display will be redrawn through this method. <br>
@@ -69,9 +57,11 @@ public class Display extends JPanel {
 	public void paint(Graphics g) {
 		g.setColor(this.backgroundColor);
 		g.fillRect(0, 0, getWidth(), getHeight());
+		
 		Graphics2D g2d = (Graphics2D) g;
 		if(splashImage != null) drawSplash(g2d);
 		else draw(g2d);
+		
 		g2d.dispose();
 	}
 	
@@ -98,6 +88,18 @@ public class Display extends JPanel {
 	public void draw(Graphics2D g2d) {
 		if(renderer != null) renderer.draw(g2d);
 		else if(splashImage != null) drawSplash(g2d);
+	}
+	
+	/**
+	 * Sets the splash image to display. Use {@code null} as the parameter to
+	 * hid the splash image and show what the {@link Renderer} wants to draw.
+	 * 
+	 * @param splash
+	 *        - The splash image to use.
+	 */
+	public void setSplashImage(BufferedImage splash) {
+		Logging.log(LoggingSpice.MILD, splash == null ? "Removing splash image." : "Setting a splash image.");
+		this.splashImage = splash;
 	}
 	
 	/**

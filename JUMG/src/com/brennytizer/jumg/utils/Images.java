@@ -10,7 +10,7 @@ import com.brennytizer.jumg.utils.Logging.LoggingSpice;
  * This class is dedicated to loading images. Extending this class will allow
  * for better intergration.
  * 
- * @author jarod
+ * @author Jarod Brennfleck
  */
 public class Images {
 	/**
@@ -30,10 +30,26 @@ public class Images {
 	 * @param image
 	 *        - The image name to use (excluding the file extension)
 	 * @return {@link BufferedImage} - The image if found, null if not found.
+	 * @see #getImage(String, String)
 	 */
 	public static BufferedImage getImage(String image) {
+		return getImage(image, ".png");
+	}
+	
+	/**
+	 * Returns an image by using a method of finding the image inside the jar
+	 * files by following:<br>
+	 * <br>
+	 * <code>{@link #IMAGE_PACKAGE} + image + extension</code>
+	 * 
+	 * @param image
+	 *        - The image name to use (excluding the file extension)
+	 * @return {@link BufferedImage} - The image if found, null if not found.
+	 * @see #getImage(String)
+	 */
+	public static BufferedImage getImage(String image, String extension) {
 		try {
-			return ImageIO.read(Images.class.getResourceAsStream(IMAGE_PACKAGE + image + ".png"));
+			return ImageIO.read(Images.class.getResourceAsStream(IMAGE_PACKAGE + image + extension));
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

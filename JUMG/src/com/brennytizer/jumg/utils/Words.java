@@ -3,9 +3,10 @@ package com.brennytizer.jumg.utils;
 import com.brennytizer.jumg.utils.Logging.LoggingSpice;
 
 public class Words {
-	public static String padTo(String word, int amount, String padding) {
+	public static String padTo(String word, int amount, String padding, boolean append) {
 		for(int i = 0; i < amount && word.length() < amount; i++)
-			word += padding;
+			if(append) word += padding;
+			else word = padding + word;
 		return word.substring(0, amount);
 	}
 	
@@ -17,5 +18,14 @@ public class Words {
 		for(int i = 0; i < oldChars.length(); i++)
 			word.replace(oldChars.charAt(i), newChars.charAt(i));
 		return word;
+	}
+	
+	public static String cutAt(String word, int whereToCut) {
+		return word.substring(0, whereToCut > 0 ? whereToCut : 0);
+	}
+
+	public static String capitaliseFirstLetter(String word) {
+		word = word.toLowerCase();
+		return word.substring(0, 1).toUpperCase() + word.substring(1);
 	}
 }

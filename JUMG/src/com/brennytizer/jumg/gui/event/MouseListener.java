@@ -1,4 +1,4 @@
-package com.brennytizer.jumg.gui;
+package com.brennytizer.jumg.gui.event;
 
 import java.awt.event.MouseEvent;
 

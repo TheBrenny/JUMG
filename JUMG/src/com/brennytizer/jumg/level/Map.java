@@ -47,7 +47,7 @@ public class Map implements TileBasedMap {
 	public void renderRenderables(Graphics2D g2d, ArrayList<Renderable> renderables, float xOffset, float yOffset, int boardWidth, int boardHeight, float scale) {
 		for(Renderable r : renderables) {
 			if((r.getX() + r.getWidth()) * scale >= xOffset && (r.getY() + r.getHeight()) * scale >= yOffset && r.getX() <= xOffset + boardWidth && r.getY() <= yOffset + boardHeight) {
-				g2d.drawImage(r.getSprite(), (int) (r.getX() * scale), (int) (r.getY() * scale), (int) (r.getWidth() * scale), (int) (r.getHeight() * scale), null);
+				g2d.drawImage(r.getAngle().getRotation(r.getSprite()), (int) (r.getX() * scale), (int) (r.getY() * scale), (int) (r.getWidth() * scale), (int) (r.getHeight() * scale), null);
 			}
 		}
 	}

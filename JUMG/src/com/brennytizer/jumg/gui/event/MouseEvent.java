@@ -1,4 +1,4 @@
-package com.brennytizer.jumg.gui;
+package com.brennytizer.jumg.gui.event;
 
 import java.awt.Point;
 
@@ -17,7 +17,7 @@ import com.brennytizer.jumg.utils.geom.Point2D;
  * recorded.
  * </p>
  * 
- * @author jarod
+ * @author Jarod Brennfleck
  */
 public class MouseEvent {
 	public static final byte MIDDLE_MOUSE_UP = -3;

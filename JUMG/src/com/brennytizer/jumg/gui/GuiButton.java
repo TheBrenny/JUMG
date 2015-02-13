@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import com.brennytizer.jumg.gui.event.MouseEvent;
 import com.brennytizer.jumg.utils.Images;
 import com.brennytizer.jumg.utils.Logging;
 import com.brennytizer.jumg.utils.Logging.LoggingSpice;

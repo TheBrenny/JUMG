@@ -3,7 +3,7 @@ package com.brennytizer.jumg.utils.geom;
 /**
  * A class to track a location in 2D space, to an accurate level.
  * 
- * @author jarod
+ * @author Jarod Brennfleck
  */
 public class Point2D extends java.awt.geom.Point2D.Float {
 	private static final long serialVersionUID = 1L;
@@ -58,6 +58,11 @@ public class Point2D extends java.awt.geom.Point2D.Float {
 		this.y = y;
 	}
 	
+	public void shift(float x, float y) {
+		this.x += x;
+		this.y += y;
+	}
+	
 	/**
 	 * Tests whether or not the specified x and y coordinates are within the
 	 * square radius of range from this point.
@@ -74,6 +79,4 @@ public class Point2D extends java.awt.geom.Point2D.Float {
 		Rectangle2D rect = new Rectangle2D(this.x - range, this.y - range, range * 2, range * 2);
 		return rect.contains(new Point2D(x, y));
 	}
-	
-	
 }

@@ -33,7 +33,7 @@ public abstract class Engine implements Runnable {
 		long lastTimer = System.currentTimeMillis();
 		double delta = 0;
 		
-		running = true;
+		running = init();
 		while(running) {
 			long now = System.nanoTime();
 			delta += (now - lastTime) / nsPerTick;
@@ -69,6 +69,7 @@ public abstract class Engine implements Runnable {
 	}
 	public abstract void tick();
 	public abstract void render();
+	public abstract boolean init();
 	public Thread start() {
 		thread = new Thread(this, "Engine Thread");
 		thread.start();

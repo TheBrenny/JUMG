@@ -15,18 +15,24 @@ JUMG (pronounced 'Jum-Gee', acronymed 'Java Utilities for Making Games') is a li
 
 As JUMG is in development, it is necessary for a checklist to be made of what needs to be added, and what is added. This is here for simplicity's sake:
 <br>**JUMG Development Checklist:**
- 1. [x] Frame and Screen implementation
- 2. [ ] Graphical User Interface utilities (will be continued as I go on...)
- 3. [x] Engine and cycle system
- 4. [x] Sprite Manager
- 5. [x] Level Manager
- 6. [ ] Perfect A* Pathfinding
- 7. [x] Sound Manager
- 8. [x] Key Bindings
- 9. [ ] Entities (currently working on...)
- 10. [ ] Event System
- 11. [ ] Networking
- 12. [ ] RELEASE!
+ 1. [ ] Basic file reading system (currently working on...)
+ 2. [x] Compression Algorithm
+ 3. [x] Frame and Screen implementation
+ 4. [ ] Graphical User Interface utilities (will be continued as I go on...)
+ 5. [ ] Heads Up Display simplicity
+ 6. [x] Engine and cycle system
+ 7. [x] Sprite Manager
+ 8. [x] Level Manager
+ 9. [ ] Perfect A* Pathfinding
+ 10. [x] Sound Manager
+ 11. [x] Key Bindings
+ 12. [x] Entities
+ 13. [ ] Save Game System
+ 14. [ ] Questing System
+ 15. [ ] Event System
+ 16. [ ] Networking
+ 17. [ ] Version control and updating
+ 18. [ ] RELEASE!
 
 ###Who is BrennyTizer?
 BrennyTizer is not a person, it is merely a blog/portfolio of one's work. That person who's work is being collected is Jarod Brennfleck. He is the guy who is constantly working hard to develop programs while achieving good grades at school. Currently a Year 11 student, Jarod has completed a few programs for some classes which he will be releasing soon online! For all the news and updates, check out his website at http://brennytizer.com.au/.
@@ -65,7 +71,6 @@ public static void main(String[] args) {
 Now how much of a clamp-down is that?! JUMG just removes the boring code that we all dread to write repeatedly, and plonks it in nice little classes that allow you to have full control of. Yes, that's right. Nothing in JUMG has a private modifier - although it's bad practice - but as far as this library is concerned, there is no need to privatize anything. That frame that just got created in the JUMG example has a public JFrame in it's class. If you don't like it how you can't resize the frame, you can call the `JFrame.setMinimumSize(Dimension)` and `JFrame.setMaximumSize(Dimension)` by using `Frame.frame.set*Size`. Or you can set it to your own customized frame - provided it extends JFrame in some way!
 
 ###How to use JUMG
-
 Due to JUMG's unique style of a multi-library mode, you can select which libraries you want to implement. This allows for a slim development of your game - if that's what you're after. There a not many necessities that come when it's time to implement, but one of these is the utils package is a must, no matter what package you're after. The utils package is an all round package which implements the most important tools into the library. The utils package contains methods such as logging, images, and certain units of measurement (which are annoying to implement with java - *cough* angles). But then again, that's what JUMG aims to do. Cut down your boring code so you can work faster.
 
 So if the previous paragraph was a tl;dr for you, here are the simple steps:
@@ -84,7 +89,6 @@ So if the previous paragraph was a tl;dr for you, here are the simple steps:
 Note that these methods allow you to alter the packages, for your own personalization benefits, or to improve on JUMG. If you do make an improvement or addition that is not personalized, **push a request**!
 
 ###Extra Notes
-
 JUMG is an open source tool that is freely available for modifications. Take it and throw it into eclipse, but remember that it would be nice that if you muddle around with it, that if you could throw a push request to the current JUMG build, here on GitHub.
 
 JUMG uses the [Gnu GPL](http://www.gnu.org/licenses/gpl-3.0.txt) license to support modification of the works presented in this repository - however one should always remember to not redistribute the works under their name. I mean, come on man, that's not cool. Changes and additions to the works will be credited with a name, date, and a slogan (provided that I approve of the slogan).

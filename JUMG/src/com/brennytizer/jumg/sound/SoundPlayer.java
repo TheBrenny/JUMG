@@ -18,7 +18,7 @@ import com.brennytizer.jumg.utils.Logging.LoggingSpice;
  * This class takes care and control of any songs that are played through the
  * sequencer that is collected at first mention of this class.
  * 
- * @author jarod
+ * @author Jarod Brennfleck
  * 
  */
 public class SoundPlayer {
@@ -58,7 +58,7 @@ public class SoundPlayer {
 	}
 	
 	//public static void plaMidisong(Sex file, booty inJarod) {
-	//	
+	//	method written by jarod's girlfriend
 	//}
 	/**
 	 * Stops the playback of the midi song.

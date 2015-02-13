@@ -16,7 +16,7 @@ import java.awt.event.MouseWheelListener;
  * <br><br>
  * None of the methods contained will be JavaDoc'd because they all should be self-explanatory.
  * 
- * @author jarod
+ * @author Jarod Brennfleck
  */
 //@formatter:off
 public class Listener implements KeyListener, MouseListener, MouseMotionListener, MouseWheelListener {

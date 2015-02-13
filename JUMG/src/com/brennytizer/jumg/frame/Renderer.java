@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
  * Initially intended to be a Tag Interface this interface forces implementation
  * of the draw method which is used by the {@link Display} class.
  * 
- * @author jarod
+ * @author Jarod Brennfleck
  */
 public interface Renderer {
 	/**

@@ -4,7 +4,7 @@ package com.brennytizer.jumg.utils.geom;
  * A polygon is a 2D geometrical object with 3 or more sides. Thus it must have
  * at least 3 corners.
  * 
- * @author jarod
+ * @author Jarod Brennfleck
  */
 public class Polygon {
 	public Point2D[] points;

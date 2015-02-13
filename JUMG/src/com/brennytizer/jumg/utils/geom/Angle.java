@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
  * access to creating, adjusting, messing with angles. This class also allows
  * for the creation of rotated images.
  * 
- * @author jarod
+ * @author Jarod Brennfleck
  */
 public class Angle {
 	public float angle;
@@ -136,7 +136,7 @@ public class Angle {
 	
 	/**
 	 * This class gives values as to how fast along the x and y axis an object should be moving.
-	 * @author jarod
+	 * @author Jarod Brennfleck
 	 */
 	public class AngleSpeed {
 		public float xSpeed;

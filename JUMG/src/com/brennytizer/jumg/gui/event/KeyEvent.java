@@ -1,4 +1,4 @@
-package com.brennytizer.jumg.gui;
+package com.brennytizer.jumg.gui.event;
 
 /**
  * <p>
@@ -22,7 +22,7 @@ package com.brennytizer.jumg.gui;
  * then all is good!
  * </p>
  * 
- * @author jarod
+ * @author Jarod Brennfleck
  */
 public class KeyEvent {
 	public static final byte LEFT_SHIFT = 1;

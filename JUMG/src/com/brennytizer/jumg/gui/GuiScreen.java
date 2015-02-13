@@ -3,6 +3,8 @@ package com.brennytizer.jumg.gui;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+import com.brennytizer.jumg.gui.event.GuiComponentObservable;
+
 public abstract class GuiScreen {
 	public ArrayList<GuiComponent> components;
 	
@@ -21,6 +23,7 @@ public abstract class GuiScreen {
 			c.draw(g2d);
 		}
 	}
+	public abstract void update();
 	public abstract void draw(Graphics2D g2d);
 	
 	public synchronized GuiComponent[] getComponents() {

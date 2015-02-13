@@ -22,7 +22,7 @@ import com.brennytizer.jumg.utils.engine.Engine;
  * and initialization of a JFrame. All variables have been made public to enable
  * for the fact that others may want to alter them at any time during runtime.
  * 
- * @author jarod
+ * @author Jarod Brennfleck
  */
 public class Frame {
 	public String title;
@@ -49,6 +49,8 @@ public class Frame {
 		frame.setLocationRelativeTo(null);
 		frame.setFocusTraversalKeysEnabled(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLayout(new BorderLayout());
+		frame.setResizable(false);
 		frame.addWindowListener(new WinListen());
 		Logging.log(LoggingSpice.MILD, "Frame created.");
 	}
@@ -112,6 +114,29 @@ public class Frame {
 		Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(cursor, hotspot, name);
 		frame.setCursor(c);
 		return this;
+	}
+	
+	/**
+	 * Sets the cursor to be used in the frame.
+	 * 
+	 * @param cursor
+	 *        - The cursor object to use.
+	 * @return Itself.
+	 */
+	public Frame setCursor(Cursor cursor) {
+		Logging.log(LoggingSpice.MILD, "Setting cursor to: " + cursor.getName());
+		frame.setCursor(cursor);
+		return this;
+	}
+	
+	/**
+	 * Sets the title of the frame.
+	 * 
+	 * @param title
+	 *        - The new title.
+	 */
+	public void setTitle(String title) {
+		this.frame.setTitle(this.title = title);
 	}
 	
 	//@formatter:off

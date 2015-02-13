@@ -14,7 +14,7 @@ import com.brennytizer.jumg.utils.Math;
  * through the attached synthesizer which is collected on first mention of this
  * class.
  * 
- * @author jarod
+ * @author Jarod Brennfleck
  * @see Synthesizer
  */
 public class SoundSynthesizer {

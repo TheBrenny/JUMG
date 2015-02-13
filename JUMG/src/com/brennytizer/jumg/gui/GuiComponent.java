@@ -2,6 +2,10 @@ package com.brennytizer.jumg.gui;
 
 import java.awt.Graphics2D;
 
+import com.brennytizer.jumg.gui.event.GuiComponentListener;
+import com.brennytizer.jumg.gui.event.GuiComponentObservable;
+import com.brennytizer.jumg.gui.event.KeyEvent;
+import com.brennytizer.jumg.gui.event.MouseEvent;
 import com.brennytizer.jumg.utils.geom.Rectangle2D;
 
 /**
@@ -9,7 +13,7 @@ import com.brennytizer.jumg.utils.geom.Rectangle2D;
  * necessary values are a location value and size value. The location and size
  * are necessary for the mouse events that will be called.
  * 
- * @author jarod
+ * @author Jarod Brennfleck
  */
 public abstract class GuiComponent implements GuiComponentListener {
 	public Rectangle2D boundingBox;
@@ -49,6 +53,10 @@ public abstract class GuiComponent implements GuiComponentListener {
 			throw new IndexOutOfBoundsException(built + " are out of range! They must be >= 1!");
 		}
 		if(requiresInput) GuiComponentObservable.addListener(this);
+	}
+	
+	public Rectangle2D getBoundingBox() {
+		return this.boundingBox;
 	}
 	
 	public void onMouseMove(MouseEvent e) {};

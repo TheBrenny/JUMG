@@ -1,4 +1,4 @@
-package com.brennytizer.jumg.gui;
+package com.brennytizer.jumg.gui.event;
 
 import java.util.ArrayList;
 
@@ -20,6 +20,7 @@ public class GuiComponentObservable extends Listener {
 	}
 	
 	public void mouseMove(java.awt.event.MouseEvent e, boolean pressed) {
+		System.out.println("GUICobse: mouse: " + e);
 		byte mouseButton = (byte) (pressed ? e.getButton() : -e.getButton());
 		MouseEvent me = new MouseEvent(e.getPoint(), mouseButton, (short) 0);
 		synchronized(listeners) {
