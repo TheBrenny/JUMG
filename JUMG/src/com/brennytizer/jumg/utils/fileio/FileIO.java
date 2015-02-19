@@ -19,6 +19,11 @@ import com.brennytizer.jumg.utils.Logging.LoggingSpice;
  * @author Jarod Brennfleck
  */
 public class FileIO {
+	public static String userHome = System.getProperty("user.home");
+	
+	public static String keySpace = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.$";
+	public static boolean compressData = true;
+	
 	/**
 	 * Creates a file writer and returns it based off the fileLocation you give.
 	 * 
@@ -70,14 +75,14 @@ public class FileIO {
 		/**
 		 * Writes the data to the file.
 		 */
-		public void writeData(boolean compress) {
+		public void writeData() {
 			writing = true;
 			Logging.log(LoggingSpice.MILD, "Preparing to write data...");
 			BufferedWriter bw = null;
 			try {
 				bw = new BufferedWriter(new FileWriter(file));
 				for(String line : data) {
-					line = compress ? BrennyPress.convert(line, true) : line;
+					line = compressData ? BrennyPress.convert(line, true) : line;
 					Logging.log(LoggingSpice.MILD, "  Writing line: " + line);
 					bw.write(line);
 					bw.newLine();
@@ -144,20 +149,21 @@ public class FileIO {
 		/**
 		 * Reads the data from the file.
 		 */
-		public void readData(boolean compressed) {
+		public void readData() {
 			Logging.log(LoggingSpice.MILD, "Preparing to read data...");
 			BufferedReader br = null;
 			try {
 				br = new BufferedReader(new FileReader(file));
 				String line = "";
 				while((line = br.readLine()) != null) {
-					data.add(line = (compressed ? BrennyPress.convert(line, false) : line));
+					data.add(line = (compressData ? BrennyPress.convert(line, false) : line));
 					Logging.log(LoggingSpice.MILD, "  Read line: " + line);
 				}
 				Logging.log(LoggingSpice.MILD, "Closing connection to file.");
 				br.close();
 			} catch(IOException e) {
 				e.printStackTrace();
+				Logging.log(LoggingSpice.HOT, "Oh no! Something wen wrong when reading from: " + file.getName());
 			}
 			Logging.log(LoggingSpice.MILD, "Finished reading.");
 		}
@@ -168,5 +174,13 @@ public class FileIO {
 		public ArrayList<String> getData() {
 			return data;
 		}
+	}
+
+	static {
+		BrennyPress.changeKeySpace(keySpace);
+	}
+
+	public static void setCompression(boolean compress) {
+		FileIO.compressData = compress;
 	}
 }

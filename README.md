@@ -15,7 +15,7 @@ JUMG (pronounced 'Jum-Gee', acronymed 'Java Utilities for Making Games') is a li
 
 As JUMG is in development, it is necessary for a checklist to be made of what needs to be added, and what is added. This is here for simplicity's sake:
 <br>**JUMG Development Checklist:**
- 1. [ ] Basic file reading system (currently working on...)
+ 1. [x] Basic file reading system
  2. [x] Compression Algorithm
  3. [x] Frame and Screen implementation
  4. [ ] Graphical User Interface utilities (will be continued as I go on...)
@@ -27,7 +27,8 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  10. [x] Sound Manager
  11. [x] Key Bindings
  12. [x] Entities
- 13. [ ] Save Game System
+ 13. [x] Inventory System
+ 13. [ ] Save Game System (currently working on...)
  14. [ ] Questing System
  15. [ ] Event System
  16. [ ] Networking

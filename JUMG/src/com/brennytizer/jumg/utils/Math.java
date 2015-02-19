@@ -51,4 +51,11 @@ public class Math {
 	public static float clampFloat(float value, float min, float max) {
 		return value <= min ? min : value >= max ? max : value;
 	}
+
+	public static int absolute(int value) {
+		return absolute(value, true);
+	}
+	public static int absolute(int value, boolean positive) {
+		return java.lang.Math.abs(value) * (positive ? 1 : -1);
+	}
 }

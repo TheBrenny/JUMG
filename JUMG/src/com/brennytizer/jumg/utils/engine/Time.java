@@ -1,6 +1,7 @@
 package com.brennytizer.jumg.utils.engine;
 
 import com.brennytizer.jumg.utils.Words;
+import com.brennytizer.jumg.utils.fileio.FileInstantiable;
 
 /**
  * A time keeping class that can help out for when you have ageable entities,
@@ -8,14 +9,17 @@ import com.brennytizer.jumg.utils.Words;
  * 
  * @author Jarod Brennfleck
  */
-public class Time {
+public class Time implements FileInstantiable {
 	public static String RATIO_E = "1667ms=10m"; // Ratio EQUATION
 	public static long[] RATIO_D = {1, 1}; // Ratio DATA. Both entries should be stored as milliseconds.
 	//	public static boolean INVERSE_RATIO = false; // Lets the clock know that the left side of the equation is smaller. (Slow down time)
 	public static long START_TIME = 0; // The time we started at (Sys.currentTime)
 	public static long LAST_UPDATED = 0; // The last time we called the update loop
 	public static long[] CLOCK = {0, 0, 0, 0, 0}; // 5 data entries: ms, s, m, h, d
-	public static long[] TIME_CONVERSION = {1, 1000, 60000, 3600000, 86400000}; // millisecond conversion to: ms, s, m, h, d
+	public static long[] TIME_CONVERSION = {1, 1000, 60, 60, 24};
+	
+	//public static long[] TIME_CONVERSION = {1, 1000, 60000, 3600000, 86400000}; // millisecond conversion to: ms, s, m, h, d
+	public Time() {}
 	
 	/**
 	 * Ideally should be called every time there is a game logic update. It
@@ -100,8 +104,8 @@ public class Time {
 	 */
 	public static void startClock(String ratio) {
 		updateRatio(ratio);
-		for(int i = 0; i < CLOCK.length; i++)
-			CLOCK[i] = 0;
+		//for(int i = 0; i < CLOCK.length; i++) // Removed as of 19 Feb 2015. Redundant 
+		//	CLOCK[i] = 0;						// because what if we want to continue time?
 		START_TIME = System.currentTimeMillis();
 		LAST_UPDATED = START_TIME;
 	}
@@ -115,24 +119,29 @@ public class Time {
 		String[] splitE = ratio.split("=");
 		long[] timeConvert = new long[2];
 		for(int i = 0; i < 2; i++) {
-			if(splitE[i].contains("ms")) {
+			String unit = Words.cutFrom(splitE[i], Words.find(splitE[i], "ms|[smhd]"));
+			switch(unit) {
+			default:
+			case "ms":
 				splitE[i] = Words.cutAt(splitE[i], splitE[i].length() - 2);
 				timeConvert[i] = TIME_CONVERSION[0];
-			} else if(splitE[i].contains("s")) {
+				break;
+			case "s":
 				splitE[i] = Words.cutAt(splitE[i], splitE[i].length() - 1);
 				timeConvert[i] = TIME_CONVERSION[1];
-			} else if(splitE[i].contains("m")) {
+				break;
+			case "m":
 				splitE[i] = Words.cutAt(splitE[i], splitE[i].length() - 1);
 				timeConvert[i] = TIME_CONVERSION[2];
-			} else if(splitE[i].contains("h")) {
+				break;
+			case "h":
 				splitE[i] = Words.cutAt(splitE[i], splitE[i].length() - 1);
 				timeConvert[i] = TIME_CONVERSION[3];
-			} else if(splitE[i].contains("d")) {
+				break;
+			case "d":
 				splitE[i] = Words.cutAt(splitE[i], splitE[i].length() - 1);
 				timeConvert[i] = TIME_CONVERSION[4];
-			} else {
-				splitE[i] = Words.cutAt(splitE[i], splitE[i].length() - 2);
-				timeConvert[i] = TIME_CONVERSION[0];
+				break;
 			}
 		}
 		long[] ratioData = {Math.abs(Long.parseLong(splitE[0])) * timeConvert[0], Math.abs(Long.parseLong(splitE[1])) * timeConvert[1]};
@@ -143,5 +152,22 @@ public class Time {
 		ratioData[1] = b;
 		// WHILE WE HAVEN'T IMPLEMENTED RATIO INVERSE:
 		Time.RATIO_D = ratioData;
+	}
+	
+	public static void setClock(long millis, long seconds, long minutes, long hours, long days) {
+		CLOCK[0] = millis;
+		CLOCK[1] = seconds;
+		CLOCK[2] = minutes;
+		CLOCK[3] = hours;
+		CLOCK[4] = days;
+	}
+	
+	public Object instantiateWithParams(String ... params) {
+		updateRatio(params[0]);
+		long[] clock = new long[5];
+		for(int i = 0; i < clock.length; i++)
+			clock[i] = Long.parseLong(params[i + 1]);
+		Time.CLOCK = clock;
+		return Time.CLOCK;
 	}
 }

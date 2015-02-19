@@ -3,7 +3,7 @@ package com.brennytizer.brennypress;
 import java.util.ArrayList;
 
 public class BrennyPress {
-	public static String keySpace = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.$";
+	public static String keySpace = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789. ";
 	
 	public static void changeKeySpace(String keySpace) {
 		BrennyPress.keySpace = padTo(keySpace, 64, ".", true);
@@ -38,8 +38,6 @@ public class BrennyPress {
 			bits += padTo(Integer.toBinaryString(c), 8 , "0", false);
 		}
 		int last = bits.length() - (bits.length() % 6);
-		System.out.println(bits.length());
-		System.out.println(bits.length() % 6);
 		bits = padTo(bits, last, "", true);
 		while(bits.length() != 0) {
 			String sixBits = bits.substring(0, 6);

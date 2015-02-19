@@ -17,6 +17,9 @@ public class Images {
 	 * The package to retrieve images from.
 	 */
 	public static String IMAGE_PACKAGE = "/com/brennytizer/jumg/utils/";
+	
+	public static BufferedImage TEST_IMAGE;
+	
 	static {
 		Logging.log(LoggingSpice.MILD, "Loading images");
 	}
