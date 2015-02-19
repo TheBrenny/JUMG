@@ -28,7 +28,7 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  11. [x] Key Bindings
  12. [x] Entities
  13. [x] Inventory System
- 13. [ ] Save Game System (currently working on...)
+ 13. [ ] **Save Game System (currently working on...)**
  14. [ ] Questing System
  15. [ ] Event System
  16. [ ] Networking
