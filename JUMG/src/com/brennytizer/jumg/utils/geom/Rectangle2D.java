@@ -6,7 +6,7 @@ package com.brennytizer.jumg.utils.geom;
  * 
  * @author Jarod Brennfleck
  */
-public class Rectangle2D extends java.awt.geom.Rectangle2D.Float {
+public class Rectangle2D extends java.awt.geom.Rectangle2D.Float implements PolygonalObject {
 	private static final long serialVersionUID = 1L;
 	
 	/**

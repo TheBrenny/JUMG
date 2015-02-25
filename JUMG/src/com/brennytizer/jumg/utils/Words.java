@@ -22,6 +22,7 @@ public class Words {
 			word.replace(oldChars.charAt(i), newChars.charAt(i));
 		return word;
 	}
+	
 	public static String swapParts(String word, String oldPart, String newPart) {
 		return word.replace(oldPart, newPart);
 	}
@@ -33,21 +34,23 @@ public class Words {
 	public static String cutFrom(String word, int whereToCut) {
 		return word.substring(whereToCut <= 0 ? 0 : whereToCut >= word.length() ? word.length() : whereToCut);
 	}
-
+	
 	public static String capitaliseFirstLetter(String word) {
 		word = word.toLowerCase();
 		return word.substring(0, 1).toUpperCase() + word.substring(1);
 	}
-
+	
 	public static String multiplty(String word, int amount) {
 		String newWord = "";
-		for(int i = 0; i < amount; i++) newWord += word;
+		for(int i = 0; i < amount; i++)
+			newWord += word;
 		return newWord;
 	}
 	
 	public static int indexOf(String word, String what) {
 		return indexOf(word, what, 0);
 	}
+	
 	public static int indexOf(String word, String what, int index) {
 		int counter = 0;
 		if(index >= 0) {
@@ -81,5 +84,18 @@ public class Words {
 	public static String findWord(String word, String regex, int skips) {
 		Matcher m = Pattern.compile(regex).matcher(word);
 		return m.find() ? word.substring(m.start(skips), m.end(skips)) : "";
+	}
+	
+	public static int count(String word, String search) {
+		return count(word, search, false);
+	}
+	
+	public static int count(String word, String search, boolean stack) { // stacking is when '$$' matches $$$$ thrice instead of twice..
+		int counter = 0;
+		for(int i = 0; i < word.length() - search.length(); i++) {
+			if(word.substring(0, search.length()).equals(search)) counter++;
+			if(!stack) word = word.substring(search.length());
+		}
+		return counter;
 	}
 }

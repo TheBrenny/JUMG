@@ -1,4 +1,4 @@
-package com.brennytizer.brennypress;
+package com.brennytizer.jumg.utils.fileio.compression;
 
 import java.util.ArrayList;
 

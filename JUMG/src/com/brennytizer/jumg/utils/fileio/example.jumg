@@ -33,7 +33,10 @@ groupings go by Greedy First; which means it'll match $$$ before $:
  - $(2)	| Perform a function.								| $Function to perform$ (Such as F.)
  - P.	| Start reading a point.							| $$P.x coord$.$y coord$$ (where $.$ splits between the two coords)
  - I.	| Get a buffered image from the Images class.		| $$I.IMAGE.NAME$$ (Where a '.' is a '_')
- - F.	| Start reading a file relative to the set path.	| $$F.File location$$ (Where $.$ is a '/')
+ - PO.	| Start reading a polygon.							| $$PO.xA$.$yA$.$xB$.$yB$.$xC$.$yC$$ (Where the 'x$.$y' can continue on)
+ - R.	| Start reading a rectangle.						| $$R.x coord$.$y coord$.$width$.$height$$
+ - A.	| Start reading an angle.							| $$A.float angle$$ (Where float angle CAN be a decimal number: '0.123')
+ - F.	| Start reading a file relative to the set path.	| $F.File location$ (Where $.$ is a '/')
 
 $..$Images$..$com.brennytizer.wom.utils.Images$..$
 

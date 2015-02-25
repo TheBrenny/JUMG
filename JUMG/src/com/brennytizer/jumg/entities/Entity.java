@@ -3,6 +3,7 @@ package com.brennytizer.jumg.entities;
 import com.brennytizer.jumg.utils.Renderable;
 import com.brennytizer.jumg.utils.Sprite;
 import com.brennytizer.jumg.utils.geom.Point2D;
+import com.brennytizer.jumg.utils.geom.PolygonalObject;
 import com.brennytizer.jumg.utils.geom.Rectangle2D;
 
 /**
@@ -11,7 +12,7 @@ import com.brennytizer.jumg.utils.geom.Rectangle2D;
  * 
  * @author Jarod Brennfleck
  */
-public abstract class Entity implements Renderable {
+public abstract class Entity implements Renderable, PolygonalObject {
 	public String uid;
 	public Sprite sprite;
 	public Point2D location;

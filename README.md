@@ -28,11 +28,12 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  11. [x] Key Bindings
  12. [x] Entities
  13. [x] Inventory System
- 13. [ ] **Save Game System (currently working on...)**
+ 13. [x] Save Game System
  14. [ ] Questing System
- 15. [ ] Event System
+ 15. [ ] **Event System (currently working on...)**
  16. [ ] Networking
  17. [ ] Version control and updating
+ 18. [ ] Full JavaDocs
  18. [ ] RELEASE!
 
 ###Who is BrennyTizer?
@@ -95,3 +96,20 @@ JUMG is an open source tool that is freely available for modifications. Take it 
 JUMG uses the [Gnu GPL](http://www.gnu.org/licenses/gpl-3.0.txt) license to support modification of the works presented in this repository - however one should always remember to not redistribute the works under their name. I mean, come on man, that's not cool. Changes and additions to the works will be credited with a name, date, and a slogan (provided that I approve of the slogan).
 
 On another note about the license, if you need to hit the road but have already downloaded this library, and want to read the license, you can check the LICENSE.md file in the root of the library folder.
+
+####Disclamer
+JUMG and BrennyPress are free softwares: you can
+redistribute them and/or modify them under the terms of the
+GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License any later
+version.
+
+JUMG and BrennyPress are distributed in the hope that they
+will be useful, but WITHOUT ANY WARRANTY; without even the
+implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for
+more details.
+
+You should have received a copy of the GNU General Public
+License along with this software collection. If not, see
+<http://www.gnu.org/licenses/>.

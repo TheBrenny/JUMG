@@ -20,6 +20,19 @@ public class Logging {
 		if(flag) log(LoggingSpice.MILD, "Turning on logging...");
 	}
 	
+	public static void printStackTrace() {
+		printStackTrace(10);
+	}
+	public static void printStackTrace(int count) {
+		if(!shouldLog) return;
+		log(LoggingSpice.MILD, "Start stack trace of " + count + " counts.");
+		for(int i = count - 1; i >= 0; i--) {
+			StackTraceElement ste = Thread.currentThread().getStackTrace()[i];
+			System.out.println("  [" + i + "]:\t" + Words.padTo(ste.getClassName(), 20, " ", true) + "." + Words.padTo(ste.getMethodName(), 20, " ", true));
+		}
+		log(LoggingSpice.MILD, "Stack trace printing finished.");
+	}
+	
 	/**
 	 * Logs a message to the console.
 	 * 
