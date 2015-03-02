@@ -22,7 +22,7 @@ public class EventManager {
 		return e != null && events.remove(e);
 	}
 	public boolean addEvent(Event e) {
-		return !hasEvent(e.uid) && events.add(e);
+		return !hasEvent(e.getUid()) && events.add(e);
 	}
 	
 	public boolean hasEvent(String uid) {
@@ -30,7 +30,7 @@ public class EventManager {
 	}
 	public Event getEvent(String uid) {
 		for(Event e : events)
-			if(e.uid.equals(uid)) return e;
+			if(e.getUid().equals(uid)) return e;
 		return null;
 	}
 }

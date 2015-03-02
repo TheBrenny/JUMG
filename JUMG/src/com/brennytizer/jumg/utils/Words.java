@@ -99,7 +99,13 @@ public class Words {
 		return counter;
 	}
 	
-	public static String join(Iterable<?> iter, String argSplitter) {
+	public static String join(String argSplitter, Iterable<?> iter) {
+		String ret = "";
+		for(Object o : iter)
+			ret += o.toString() + argSplitter;
+		return ret.substring(0, ret.lastIndexOf(argSplitter));
+	}
+	public static String join(String argSplitter, Object... iter) {
 		String ret = "";
 		for(Object o : iter)
 			ret += o.toString() + argSplitter;

@@ -120,4 +120,40 @@ public class Math {
 		Rectangle2D r = Collisions.buildAABB(p);
 		return new Point2D(r.width / 2, r.height / 2);
 	}
+	public static class Vector2D {
+		public float moveX;
+		public float moveY;
+		
+		public Vector2D(Point2D start, Point2D end) {
+			moveX = end.x - start.x;
+			moveY = end.y - start.y;
+		}
+		public Vector2D addVector(Vector2D v) {
+			moveX += v.moveX;
+			moveY += v.moveY;
+			return this;
+		}
+		public Vector2D clamp(float clampX, float clampY) {
+			return clamp(-clampX, clampX, -clampY, clampY);
+		}
+		public Vector2D clamp(float clampMinX, float clampMaxX, float clampMinY, float clampMaxY) {
+			float tmp;
+			if(clampMinX > clampMaxX) {
+				tmp = clampMinX;
+				clampMinX = clampMaxX;
+				clampMaxX = tmp;
+			}
+			if(clampMinY > clampMaxY) {
+				tmp = clampMinY;
+				clampMinY = clampMaxY;
+				clampMaxY = tmp;
+			}
+			moveX = clampFloat(moveX, clampMinX, clampMaxX);
+			moveY = clampFloat(moveY, clampMinY, clampMaxY);
+			return this;
+		}
+		public float getRealMagnitude() {
+			return Math.root(moveX * moveX + moveY * moveY, 2);
+		}
+	}
 }

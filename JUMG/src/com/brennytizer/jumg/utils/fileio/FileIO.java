@@ -20,7 +20,7 @@ import com.brennytizer.jumg.utils.fileio.compression.BrennyPress;
  */
 public class FileIO {
 	public static String userHome = System.getProperty("user.home");
-	public static String keySpace = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.$";
+	public static String keySpace = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.=";
 	public static boolean compressData = true;
 	public boolean performingAction = false;
 	

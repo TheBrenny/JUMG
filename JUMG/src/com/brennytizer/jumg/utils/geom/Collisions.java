@@ -1,6 +1,7 @@
 package com.brennytizer.jumg.utils.geom;
 
 import com.brennytizer.jumg.utils.Math;
+import com.brennytizer.jumg.utils.Math.Vector2D;
 
 /**
  * A broad class that contains methods that have things to do with collisions.
@@ -85,12 +86,39 @@ public class Collisions {
 		return new Rectangle2D(minX, minY, maxX - minX, maxY - minY);
 	}
 	
+	/**
+	 * Rotates a {@link PolygonalObject} around the origin of the
+	 * PolygonalObject's AABB, at the specified angle.
+	 * 
+	 * @param obj
+	 *        - The PolygonalObject to rotate.
+	 * @param angle
+	 *        - The angle to rotate for.
+	 * @return {@link Polygon} - Containing all the new points for the rotated
+	 *         PolygonalObject.
+	 * @see #rotatePolygon(PolygonalObject, Point2D, float)
+	 */
 	public static Polygon rotatePolygon(PolygonalObject obj, float angle) {
 		return rotatePolygon(obj, Math.getMidPoint(obj), angle);
 	}
 	
+	/**
+	 * Rotates a {@link PolygonalObject} around an origin, at the specified
+	 * angle.
+	 * 
+	 * @param obj
+	 *        - The PolygonalObject to rotate.
+	 * @param origin
+	 *        - The Origin to rotate the <code>obj</code> around.
+	 * @param angle
+	 *        - The angle to rotate for.
+	 * @return {@link Polygon} - Containing all the new points for the rotated
+	 *         PolygonalObject.
+	 * @see #rotatePolygon(PolygonalObject, float)
+	 */
 	public static Polygon rotatePolygon(PolygonalObject obj, Point2D origin, float angle) {
-		while(angle > 180F) angle -= 360F;
+		while(angle > 180F)
+			angle -= 360F;
 		Point2D[] pts = new Point2D[obj.getPoints().length];
 		for(int i = 0; i < pts.length; i++) {
 			Point2D current = obj.getPoints()[i];
@@ -98,10 +126,7 @@ public class Collisions {
 			float y = (float) (java.lang.Math.sin(angle) * (current.x - origin.x) + java.lang.Math.cos(angle) * (current.y - origin.y) + origin.y);
 			pts[i] = new Point2D(x, y);
 		}
-		
-		// look to http://homepages.inf.ed.ac.uk/rbf/HIPR2/rotate.htm for answers!
-		
-		return null;
+		return new Polygon(pts);
 	}
 	
 	/**
@@ -181,6 +206,7 @@ public class Collisions {
 	 *        - The Axis Aligned Bounding Box to check.
 	 * @return Boolean - Whether the circle and AABB collide
 	 */
+	/*
 	public static boolean collidedCircleAABB(Point2D circleO, float circleR, Rectangle2D aabb) {
 		if(aabb.contains(circleO)) return true;
 		float closestDistance = Float.MAX_VALUE;
@@ -192,6 +218,11 @@ public class Collisions {
 		}
 		if(circleO.x + circleR >= aabb.x && circleO.x - circleR <= aabb.x + aabb.width && circleO.y + circleR >= aabb.y && circleO.y - circleR <= aabb.y + aabb.height) return true;
 		return closestDistance - circleR <= 0;
+	}
+	*/
+	public static boolean collidedCircleAABB(Point2D circleO, float circleR, Rectangle2D aabb) {
+		Vector2D v = new Vector2D(Math.getMidPoint(aabb), circleO).clamp(aabb.width / 2, aabb.height / 2);
+		return Math.absolute(v.getRealMagnitude()) - circleR < 0;
 	}
 	
 	/**

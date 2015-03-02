@@ -106,7 +106,7 @@ public class KeyEvent {
 	 * this is Mac's 'Command' button apparently.
 	 * 
 	 * @param e
-	 *        - The AWT Key Event.
+	 *        - The AWT Key CollisionEvent.
 	 * @return {@link Byte} - A bit mask of the held down modifiers at the time.
 	 */
 	public static byte getByteModifiers(java.awt.event.KeyEvent e) {

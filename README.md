@@ -28,12 +28,12 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  11. [x] Key Bindings
  12. [x] Entities
  13. [x] Inventory System
- 13. [ ] **Save Game System (currently working on...)** *(redoing this...)*
+ 13. [x] Save Game System
  14. [ ] Questing System
  15. [x] Event System
  16. [x] Collision detection
  17. [ ] Networking
- 18. [ ] Version control and updating
+ 18. [ ] **Version control and updating (currently working on...)**
  19. [ ] Bulk Debugging Classes
  20. [ ] Full JavaDocs
  21. [ ] RELEASE!

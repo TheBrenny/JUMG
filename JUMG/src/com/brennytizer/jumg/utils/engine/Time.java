@@ -1,7 +1,9 @@
 package com.brennytizer.jumg.utils.engine;
 
 import com.brennytizer.jumg.utils.Words;
-import com.brennytizer.jumg.utils.fileio.FileInstantiable;
+import com.brennytizer.jumg.utils.fileio.LoadData;
+import com.brennytizer.jumg.utils.fileio.ObjectSaveable;
+import com.brennytizer.jumg.utils.fileio.SaveData;
 
 /**
  * A time keeping class that can help out for when you have ageable entities,
@@ -9,17 +11,15 @@ import com.brennytizer.jumg.utils.fileio.FileInstantiable;
  * 
  * @author Jarod Brennfleck
  */
-public class Time implements FileInstantiable<Time> {
+public class Time implements ObjectSaveable {
+	public static final long[] TIME_CONVERSION = {1, 1000, 60, 60, 24};
+	//public static long[] TIME_CONVERSION = {1, 1000, 60000, 3600000, 86400000}; // millisecond conversion to: ms, s, m, h, d
 	public static String RATIO_E = "1667ms=10m"; // Ratio EQUATION
 	public static long[] RATIO_D = {1, 1}; // Ratio DATA. Both entries should be stored as milliseconds.
 	//	public static boolean INVERSE_RATIO = false; // Lets the clock know that the left side of the equation is smaller. (Slow down time)
 	public static long START_TIME = 0; // The time we started at (Sys.currentTime)
 	public static long LAST_UPDATED = 0; // The last time we called the update loop
 	public static long[] CLOCK = {0, 0, 0, 0, 0}; // 5 data entries: ms, s, m, h, d
-	public static long[] TIME_CONVERSION = {1, 1000, 60, 60, 24};
-	
-	//public static long[] TIME_CONVERSION = {1, 1000, 60000, 3600000, 86400000}; // millisecond conversion to: ms, s, m, h, d
-	public Time() {}
 	
 	/**
 	 * Ideally should be called every time there is a game logic update. It
@@ -162,12 +162,20 @@ public class Time implements FileInstantiable<Time> {
 		CLOCK[4] = days;
 	}
 	
-	public Time instantiateWithParams(String ... params) {
-		updateRatio(params[0]);
-		long[] clock = new long[5];
-		for(int i = 0; i < clock.length; i++)
-			clock[i] = Long.parseLong(params[i + 1]);
-		Time.CLOCK = clock;
-		return this;
+	public static void save(String location) {
+		new SaveData(location, new Time()).saveData();
+	}
+	
+	public static void load(String location) {
+		LoadData ld = new LoadData(location);
+		ld.read();
+		RATIO_E = ld.getFromCache("ratio_e");
+		String[] s = ld.getFromCache("ratio_d").split("="); // 's' stands for 'split'
+		RATIO_D = new long[] {Long.parseLong(s[0]), Long.parseLong(s[1])};
+		s = ld.getFromCache("clock").split("=");
+		CLOCK = new long[] {Long.parseLong(s[0]), Long.parseLong(s[1]), Long.parseLong(s[2]), Long.parseLong(s[3]), Long.parseLong(s[4])};
+	}
+	public String[] dataToSave() {
+		return new String[] {"ratio_e=" + RATIO_E, "ratio_d=" + Words.join("=", RATIO_D), "clock=" + Words.join("=", CLOCK)};
 	}
 }
