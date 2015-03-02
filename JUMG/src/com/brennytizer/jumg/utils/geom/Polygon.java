@@ -6,7 +6,7 @@ package com.brennytizer.jumg.utils.geom;
  * 
  * @author Jarod Brennfleck
  */
-public class Polygon {
+public class Polygon implements PolygonalObject {
 	public Point2D[] points;
 	
 	/**
@@ -71,9 +71,6 @@ public class Polygon {
 		this.points = points;
 	}
 	
-	/**
-	 * Returns all points that make up this polygon.
-	 */
 	public Point2D[] getPoints() {
 		return points;
 	}

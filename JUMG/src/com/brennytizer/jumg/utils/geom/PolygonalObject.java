@@ -6,4 +6,9 @@ package com.brennytizer.jumg.utils.geom;
  * 
  * @author Jarod Brennfleck
  */
-public interface PolygonalObject {}
+public interface PolygonalObject {
+	/**
+	 * Returns all points that make up this polygon.
+	 */
+	public Point2D[] getPoints();
+}

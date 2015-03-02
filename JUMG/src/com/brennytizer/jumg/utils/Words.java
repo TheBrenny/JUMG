@@ -98,4 +98,49 @@ public class Words {
 		}
 		return counter;
 	}
+	
+	public static String join(Iterable<?> iter, String argSplitter) {
+		String ret = "";
+		for(Object o : iter)
+			ret += o.toString() + argSplitter;
+		return ret.substring(0, ret.lastIndexOf(argSplitter));
+	}
+	
+	public static String random(int amount, String keySpace) {
+		String ret = "";
+		for(int i = 0; i < amount; i++)
+			ret += keySpace.charAt(Math.random(keySpace.length())) + "";
+		return ret;
+	}
+	
+	public enum KeySpace {
+		INVALID(""),
+		ALPHA_UPPER("ABCDEFGHIJKLMNOPQRSTUVWXYZ"),
+		ALPHA_LOWER("abcdefghijklmnopqrstuvwxyz"),
+		NUMBERS("1234567890"),
+		SYMBOLS("`-=[]\\;',./~!@#$%^&*()_+{}|:\"<>?");
+		public String keySpace;
+		
+		KeySpace(String keySpace) {
+			this.keySpace = keySpace;
+		}
+		
+		public String getKeySpace() {
+			return this.keySpace;
+		}
+		
+		public static KeySpace belongsTo(String s) {
+			s = s.charAt(0) + "";
+			for(KeySpace ks : KeySpace.values())
+				if(ks.getKeySpace().contains(s)) return ks;
+			return INVALID;
+		}
+		
+		public static String getKeySpace(KeySpace ... keySpaces) {
+			String ret = "";
+			for(KeySpace ks : keySpaces)
+				ret += ks.getKeySpace();
+			return ret;
+		}
+	}
 }

@@ -72,11 +72,11 @@ public class FileInterpreter implements Interpreter {
 		case OBJECT_END_INIT:
 			Logging.log(LoggingSpice.MILD, "  Instantiating object with given parameters.");
 			try {
-				Class<? extends FileInstantiable> clazz = (Class<? extends FileInstantiable>) Class.forName((String) objectInitData.get(1), false, this.getClass().getClassLoader());
+				Class<? extends FileInstantiable<?>> clazz = (Class<? extends FileInstantiable<?>>) Class.forName(objectInitData.get(1), false, this.getClass().getClassLoader());
 				String name = objectInitData.get(0);
 				Logging.log(LoggingSpice.MILD, String.format("    Object: %s", Arrays.asList(objectInitData.get(0), objectInitData.get(1))));
 				objectInitData.remove(0);
-				objectInitData.remove(0);
+				objectInitData.remove(0); //Call this twice to remove the first two items.
 				String[] data = objectInitData.toArray(new String[0]);
 				Logging.log(LoggingSpice.MILD, String.format("    Params: %s", objectInitData));
 				cache.put(name, clazz.newInstance().instantiateWithParams(data));
@@ -145,6 +145,7 @@ public class FileInterpreter implements Interpreter {
 		field.set(obj, generateObject(newObj)[1]);
 	}
 	
+	@SuppressWarnings("all")
 	public static Object[] generateObject(String newObj) {
 		ReflectiveType type = ReflectiveType.getReflectiveType(newObj);
 		Object theRealNewObj = null;
@@ -179,6 +180,12 @@ public class FileInterpreter implements Interpreter {
 			float height = Float.parseFloat(split[3]);
 			theRealNewObj = new Rectangle2D(xb, yb, width, height);
 			break;
+		case LIST:
+			split = newObj.split(splitter);
+			ArrayList array = new ArrayList();
+			for(String s : split) array.add(s);
+			theRealNewObj = array;
+			break;
 		case IMAGE:
 			try {
 				Class<?> imageClazz = Class.forName((String) mandatories.get("Images"), false, FileInterpreter.class.getClassLoader());
@@ -201,7 +208,9 @@ public class FileInterpreter implements Interpreter {
 		IMAGE("I.", BufferedImage.class),
 		POLYGON("PO.", Polygon.class),
 		RECTANGLE("R.", Rectangle2D.class),
-		ANGLE("A.", Angle.class);
+		ANGLE("A.", Angle.class),
+		LIST("L.", ArrayList.class);
+		
 		public String trigger;
 		public Class<?> type;
 		

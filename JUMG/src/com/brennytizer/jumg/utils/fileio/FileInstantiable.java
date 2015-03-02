@@ -11,6 +11,6 @@ package com.brennytizer.jumg.utils.fileio;
  * 
  * @author Jarod Brennfleck
  */
-public interface FileInstantiable {
-	public Object instantiateWithParams(String ... params);
+public interface FileInstantiable<E> {
+	public E instantiateWithParams(String ... params);
 }

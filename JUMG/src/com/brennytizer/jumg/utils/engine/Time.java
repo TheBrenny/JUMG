@@ -9,7 +9,7 @@ import com.brennytizer.jumg.utils.fileio.FileInstantiable;
  * 
  * @author Jarod Brennfleck
  */
-public class Time implements FileInstantiable {
+public class Time implements FileInstantiable<Time> {
 	public static String RATIO_E = "1667ms=10m"; // Ratio EQUATION
 	public static long[] RATIO_D = {1, 1}; // Ratio DATA. Both entries should be stored as milliseconds.
 	//	public static boolean INVERSE_RATIO = false; // Lets the clock know that the left side of the equation is smaller. (Slow down time)
@@ -162,12 +162,12 @@ public class Time implements FileInstantiable {
 		CLOCK[4] = days;
 	}
 	
-	public Object instantiateWithParams(String ... params) {
+	public Time instantiateWithParams(String ... params) {
 		updateRatio(params[0]);
 		long[] clock = new long[5];
 		for(int i = 0; i < clock.length; i++)
 			clock[i] = Long.parseLong(params[i + 1]);
 		Time.CLOCK = clock;
-		return Time.CLOCK;
+		return this;
 	}
 }

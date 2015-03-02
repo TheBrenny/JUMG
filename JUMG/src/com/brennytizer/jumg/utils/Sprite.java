@@ -4,6 +4,8 @@ import java.awt.image.BufferedImage;
 
 import com.brennytizer.jumg.utils.fileio.FileInstantiable;
 import com.brennytizer.jumg.utils.fileio.FileInterpreter;
+import com.brennytizer.jumg.utils.geom.Point2D;
+import com.brennytizer.jumg.utils.geom.PolygonalObject;
 
 /**
  * This class specifically extends the BufferedImage class to allow for direct
@@ -11,7 +13,7 @@ import com.brennytizer.jumg.utils.fileio.FileInterpreter;
  * 
  * @author Jarod Brennfleck
  */
-public class Sprite extends BufferedImage implements FileInstantiable {
+public class Sprite extends BufferedImage implements FileInstantiable<Sprite>, PolygonalObject {
 	public BufferedImage map;
 	public int posX;
 	public int posY;
@@ -112,8 +114,12 @@ public class Sprite extends BufferedImage implements FileInstantiable {
 	public int getHeight() {
 		return height;
 	}
-
-	public Object instantiateWithParams(String ... params) {
+	
+	public Point2D[] getPoints() {
+		return new Point2D[] {new Point2D(posX, posY), new Point2D(posX + width, posY), new Point2D(posX + width, posY + height), new Point2D(posX, posY + height)};
+	}
+	
+	public Sprite instantiateWithParams(String ... params) {
 		BufferedImage map = (BufferedImage) FileInterpreter.generateObject(params[0])[1];
 		int x = Integer.parseInt(params[1]);
 		int y = Integer.parseInt(params[2]);

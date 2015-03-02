@@ -1,8 +1,9 @@
 package com.brennytizer.jumg.utils;
 
 import com.brennytizer.jumg.utils.geom.Angle;
+import com.brennytizer.jumg.utils.geom.PolygonalObject;
 
-public interface Renderable {
+public interface Renderable extends PolygonalObject {
 	/**
 	 * Returns the sprite of this entity.
 	 */

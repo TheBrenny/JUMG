@@ -1,14 +1,12 @@
 package com.brennytizer.jumg.save;
 
-import com.brennytizer.jumg.utils.fileio.FileInstantiable;
-
 /**
  * An interface that allows for objects to be saved as save files with JUMG
  * syntax, (or any other syntax...)
  * 
  * @author Jarod Brennfleck
  */
-public interface ObjectSaveable extends FileInstantiable {
+public interface ObjectSaveable {
 	/**
 	 * Returns the objects class and package.
 	 */
