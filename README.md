@@ -18,12 +18,12 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  1. [x] Basic file reading system
  2. [x] Compression Algorithm
  3. [x] Frame and Screen implementation
- 4. [ ] Graphical User Interface utilities (will be continued as I go on...)
+ 4. [ ] Graphical User Interface utilities *(will be continued as I go on...)*
  5. [ ] Heads Up Display simplicity
  6. [x] Engine and cycle system
  7. [x] Sprite Manager
  8. [x] Level Manager
- 9. [ ] Better AI Management
+ 9. [ ] **Better AI Management (currently working on...)**
  10. [x] Sound Manager
  11. [x] Key Bindings
  12. [x] Entities
@@ -33,7 +33,7 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  15. [x] Event System
  16. [x] Collision detection
  17. [ ] Networking
- 18. [ ] **Version control and updating (currently working on...)**
+ 18. [x] Version control and updating
  19. [ ] Bulk Debugging Classes
  20. [ ] Full JavaDocs
  21. [ ] RELEASE!

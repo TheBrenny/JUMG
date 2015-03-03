@@ -1,4 +1,4 @@
-package com.brennytizer.jumg.utils.fileio;
+package com.brennytizer.jumg.utils.io;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import com.brennytizer.jumg.utils.Logging;
 import com.brennytizer.jumg.utils.Logging.LoggingSpice;
-import com.brennytizer.jumg.utils.fileio.compression.BrennyPress;
+import com.brennytizer.jumg.utils.io.compression.BrennyPress;
 
 /**
  * A class that contains two subclasses that are dedicated to one form of IO

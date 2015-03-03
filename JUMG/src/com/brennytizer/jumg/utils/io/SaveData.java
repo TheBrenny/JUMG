@@ -1,4 +1,4 @@
-package com.brennytizer.jumg.utils.fileio;
+package com.brennytizer.jumg.utils.io;
 
 public class SaveData {
 	public String location;
