@@ -30,7 +30,7 @@ public abstract class Engine implements Runnable {
 		int ticks = 0; // records ticks that have passed.
 		int frames = 0; // records frames that have passed.
 		
-		long lastTimer = System.currentTimeMillis(); // the last time we gave tick and frame information
+		long lastTimer = Time.getCurrentTime(0); // the last time we gave tick and frame information
 		long now = System.nanoTime(); // what nano time is it now?
 		double delta = 0; // the amount of ticks we need to process
 		boolean shouldRender = false;
@@ -53,7 +53,7 @@ public abstract class Engine implements Runnable {
 				render(); // Render the outside world
 			}
 			
-			if(System.currentTimeMillis() - lastTimer >= 1000) { // Is the elapsed milli time larger than 1k?
+			if(Time.getCurrentTime(0) - lastTimer >= 1000) { // Is the elapsed milli time larger than 1k?
 				lastTimer += 1000; // Add a second on to the total milli time.
 				TICKS_PS = ticks; // Set the global counters
 				FRAMES_PS = frames;

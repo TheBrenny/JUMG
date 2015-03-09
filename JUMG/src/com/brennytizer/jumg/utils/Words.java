@@ -10,7 +10,8 @@ public class Words {
 		for(int i = 0; i < amount && word.length() < amount; i++)
 			if(append) word += padding;
 			else word = padding + word;
-		return word.substring(0, amount);
+		if(append) return word.substring(0, amount);
+		else return word.substring(word.length() - amount);
 	}
 	
 	public static String swapChars(String word, String oldChars, String newChars) {
@@ -105,7 +106,8 @@ public class Words {
 			ret += o.toString() + argSplitter;
 		return ret.substring(0, ret.lastIndexOf(argSplitter));
 	}
-	public static String join(String argSplitter, Object... iter) {
+	
+	public static String join(String argSplitter, Object ... iter) {
 		String ret = "";
 		for(Object o : iter)
 			ret += o.toString() + argSplitter;
@@ -148,5 +150,21 @@ public class Words {
 				ret += ks.getKeySpace();
 			return ret;
 		}
+	}
+	
+	// Similar to python's `String.format(obj...)` method... 
+	public static String insert(String main, Object ... objects) {
+		String ret = "";
+		for(int i = 0; i < main.length() - 2; i++) {
+			if(main.charAt(i) == '{') {
+				if(i != 0 && main.charAt(i - 1) == '\\') continue;
+				ret += main.substring(0, i);
+				int obj = Integer.parseInt(main.substring(i + 1, main.indexOf('}', i)));
+				main = main.substring(main.indexOf('}') + 1);
+				i = -1;
+				ret += objects[obj];
+			}
+		}
+		return ret;
 	}
 }

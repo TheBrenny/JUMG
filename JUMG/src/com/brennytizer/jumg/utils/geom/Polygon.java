@@ -74,4 +74,8 @@ public class Polygon implements PolygonalObject {
 	public Point2D[] getPoints() {
 		return points;
 	}
+
+	public Polygon makePolygon() {
+		return this;
+	}
 }

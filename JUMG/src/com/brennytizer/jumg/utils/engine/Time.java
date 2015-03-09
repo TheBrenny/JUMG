@@ -20,6 +20,7 @@ public class Time implements ObjectSaveable {
 	public static long START_TIME = 0; // The time we started at (Sys.currentTime)
 	public static long LAST_UPDATED = 0; // The last time we called the update loop
 	public static long[] CLOCK = {0, 0, 0, 0, 0}; // 5 data entries: ms, s, m, h, d
+	public static long SERVER_OFFSET = 0;
 	
 	/**
 	 * Ideally should be called every time there is a game logic update. It
@@ -31,7 +32,7 @@ public class Time implements ObjectSaveable {
 	 */
 	public static void update() {
 		long now = 0; // This way provides a perfect reading of time. because there is sometimes a couple ms wait before the next instruction is called...
-		CLOCK[0] += ((now = System.currentTimeMillis()) - LAST_UPDATED) * RATIO_D[1];
+		CLOCK[0] += ((now = Time.getCurrentTime(0)) - LAST_UPDATED) * RATIO_D[1];
 		LAST_UPDATED = now;
 		for(int index = 0; index < 4; index++) {
 			CLOCK[index + 1] += CLOCK[index] / TIME_CONVERSION[index + 1];
@@ -106,7 +107,7 @@ public class Time implements ObjectSaveable {
 		updateRatio(ratio);
 		//for(int i = 0; i < CLOCK.length; i++) // Removed as of 19 Feb 2015. Redundant 
 		//	CLOCK[i] = 0;						// because what if we want to continue time?
-		START_TIME = System.currentTimeMillis();
+		START_TIME = Time.getCurrentTime(0);
 		LAST_UPDATED = START_TIME;
 	}
 	
@@ -144,10 +145,10 @@ public class Time implements ObjectSaveable {
 				break;
 			}
 		}
-		long[] ratioData = {Math.abs(Long.parseLong(splitE[0])) * timeConvert[0], Math.abs(Long.parseLong(splitE[1])) * timeConvert[1]};
+		long[] ratioData = {java.lang.Math.abs(Long.parseLong(splitE[0])) * timeConvert[0], java.lang.Math.abs(Long.parseLong(splitE[1])) * timeConvert[1]};
 		// WHILE WE HAVEN'T IMPLEMENTED RATIO INVERSE:
-		long a = Math.min(ratioData[0], ratioData[1]);
-		long b = Math.max(ratioData[0], ratioData[1]);
+		long a = java.lang.Math.min(ratioData[0], ratioData[1]);
+		long b = java.lang.Math.max(ratioData[0], ratioData[1]);
 		ratioData[0] = a;
 		ratioData[1] = b;
 		// WHILE WE HAVEN'T IMPLEMENTED RATIO INVERSE:
@@ -160,6 +161,13 @@ public class Time implements ObjectSaveable {
 		CLOCK[2] = minutes;
 		CLOCK[3] = hours;
 		CLOCK[4] = days;
+	}
+	
+	public static void setServerOffset(long offset) {
+		Time.SERVER_OFFSET = offset;
+	}
+	public static long getServerOffset() {
+		return Time.SERVER_OFFSET;
 	}
 	
 	public static void save(String location) {
@@ -177,5 +185,8 @@ public class Time implements ObjectSaveable {
 	}
 	public String[] dataToSave() {
 		return new String[] {"ratio_e=" + RATIO_E, "ratio_d=" + Words.join("=", RATIO_D), "clock=" + Words.join("=", CLOCK)};
+	}
+	public static long getCurrentTime(long offset) {
+		return System.currentTimeMillis() + Time.getServerOffset() + offset;
 	}
 }

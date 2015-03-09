@@ -120,6 +120,7 @@ public class Math {
 		Rectangle2D r = Collisions.buildAABB(p);
 		return new Point2D(r.width / 2, r.height / 2);
 	}
+	
 	public static class Vector2D {
 		public float moveX;
 		public float moveY;

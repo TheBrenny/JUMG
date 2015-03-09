@@ -1,11 +1,14 @@
 package com.brennytizer.jumg.utils;
 
+import java.util.Calendar;
+
 /**
  * This class takes care of printing to the console... pretty much it.
  * 
  * @author Jarod Brennfleck
  */
 public class Logging {
+	public static LoggingSpice loggingLevel = LoggingSpice.MILD;
 	public static boolean shouldLog = false;
 	
 	/**
@@ -18,6 +21,12 @@ public class Logging {
 		if(!flag) log(LoggingSpice.MILD, "Turning off logging...");
 		Logging.shouldLog = flag;
 		if(flag) log(LoggingSpice.MILD, "Turning on logging...");
+	}
+	
+	public static void setLoggingLevel(LoggingSpice ls) {
+		Logging.loggingLevel = LoggingSpice.MILD;
+		log(LoggingSpice.MILD, "Setting logging level to: " + ls.name());
+		Logging.loggingLevel = ls;
 	}
 	
 	public static void printStackTrace() {
@@ -56,6 +65,18 @@ public class Logging {
 		if(spice == LoggingSpice.DEADLY) {
 			System.exit(1);
 		}
+	}
+	
+	public static String getLoggingTimeTrace() {
+		Calendar c = Calendar.getInstance();
+		String year = (c.get(Calendar.YEAR) + "").substring(2);
+		String month = Words.padTo(c.get(Calendar.MONTH) + 1 + "", 2, "0", false);
+		String day = Words.padTo(c.get(Calendar.DAY_OF_MONTH) + "", 2, "0", false);
+		String hour = Words.padTo(c.get(Calendar.HOUR_OF_DAY) + "", 2, "0", false);
+		String minute = Words.padTo(c.get(Calendar.MINUTE) + "", 2, "0", false);
+		String second = Words.padTo(c.get(Calendar.SECOND) + "", 2, "0", false);
+		String millisecond = Words.padTo(c.get(Calendar.MILLISECOND) + "", 3, "0", false).substring(0, 2);
+		return Words.insert("{0}-{1}-{2} {3}:{4}:{5}:{6}", year, month, day, hour, minute, second, millisecond);
 	}
 	
 	/**

@@ -23,7 +23,7 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  6. [x] Engine and cycle system
  7. [x] Sprite Manager
  8. [x] Level Manager
- 9. [ ] **Better AI Management (currently working on...)**
+ 9. [x] Better AI Management *(excluding the path webs)*
  10. [x] Sound Manager
  11. [x] Key Bindings
  12. [x] Entities
@@ -32,7 +32,7 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  14. [ ] Questing System
  15. [x] Event System
  16. [x] Collision detection
- 17. [ ] Networking
+ 17. [ ] **Networking (currently working on...)**
  18. [x] Version control and updating
  19. [ ] Bulk Debugging Classes
  20. [ ] Full JavaDocs

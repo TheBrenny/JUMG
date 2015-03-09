@@ -121,10 +121,7 @@ public class Collisions {
 			angle -= 360F;
 		Point2D[] pts = new Point2D[obj.getPoints().length];
 		for(int i = 0; i < pts.length; i++) {
-			Point2D current = obj.getPoints()[i];
-			float x = (float) (java.lang.Math.cos(angle) * (current.x - origin.x) - java.lang.Math.sin(angle) * (current.y - origin.y) + origin.x);
-			float y = (float) (java.lang.Math.sin(angle) * (current.x - origin.x) + java.lang.Math.cos(angle) * (current.y - origin.y) + origin.y);
-			pts[i] = new Point2D(x, y);
+			pts[i] = new Point2D(obj.getPoints()[i]).rotate(origin, angle);
 		}
 		return new Polygon(pts);
 	}

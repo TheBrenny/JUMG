@@ -3,6 +3,7 @@ package com.brennytizer.jumg.utils;
 import java.awt.image.BufferedImage;
 
 import com.brennytizer.jumg.utils.geom.Point2D;
+import com.brennytizer.jumg.utils.geom.Polygon;
 import com.brennytizer.jumg.utils.geom.PolygonalObject;
 
 /**
@@ -115,5 +116,9 @@ public class Sprite extends BufferedImage implements PolygonalObject {
 	
 	public Point2D[] getPoints() {
 		return new Point2D[] {new Point2D(posX, posY), new Point2D(posX + width, posY), new Point2D(posX + width, posY + height), new Point2D(posX, posY + height)};
+	}
+	
+	public Polygon makePolygon() {
+		return new Polygon(getPoints());
 	}
 }

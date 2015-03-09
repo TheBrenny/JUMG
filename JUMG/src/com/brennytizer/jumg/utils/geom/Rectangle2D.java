@@ -119,4 +119,8 @@ public class Rectangle2D extends java.awt.geom.Rectangle2D.Float implements Poly
 	public Point2D[] getPoints() {
 		return new Point2D[] {new Point2D(x, y), new Point2D(x + width, y), new Point2D(x + width, y + height), new Point2D(x, y + height)};
 	}
+	
+	public Polygon makePolygon() {
+		return new Polygon(getPoints());
+	}
 }
