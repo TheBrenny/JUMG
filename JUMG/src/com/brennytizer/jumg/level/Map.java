@@ -8,16 +8,14 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-import com.brennytizer.jumg.level.pathing.Mover;
 import com.brennytizer.jumg.utils.Logging;
 import com.brennytizer.jumg.utils.Logging.LoggingSpice;
 import com.brennytizer.jumg.utils.Renderable;
 
-public class Map implements TileBasedMap {
+public class Map {
 	public int width;
 	public int height;
 	public Tile[][] tiles;
-	public boolean[][] visited;
 	public ArrayList<Renderable> renderables;
 	public int tileSize;
 	
@@ -29,7 +27,6 @@ public class Map implements TileBasedMap {
 		this.tiles = mm.read();
 		this.tileSize = (tiles[0][0].tileSprite.width + tiles[0][0].tileSprite.height) / 2;
 		this.renderables = new ArrayList<Renderable>();
-		clearVisited();
 	}
 	
 	public void render(Graphics2D g2d, float xOffset, float yOffset, int boardWidth, int boardHeight, float scale) {
@@ -44,6 +41,7 @@ public class Map implements TileBasedMap {
 		renderRenderables(g2d, this.renderables, xOffset, yOffset, boardWidth, boardHeight, scale);
 		renderExtras(g2d, xOffset, yOffset, boardWidth, boardHeight, scale);
 	}
+	
 	public void renderRenderables(Graphics2D g2d, ArrayList<Renderable> renderables, float xOffset, float yOffset, int boardWidth, int boardHeight, float scale) {
 		for(Renderable r : renderables) {
 			if((r.getX() + r.getWidth()) * scale >= xOffset && (r.getY() + r.getHeight()) * scale >= yOffset && r.getX() <= xOffset + boardWidth && r.getY() <= yOffset + boardHeight) {
@@ -51,29 +49,13 @@ public class Map implements TileBasedMap {
 			}
 		}
 	}
+	
 	public void renderExtras(Graphics2D g2d, float xOffset, float yOffset, int boardWidth, int boardHeight, float scale) {}
 	
 	public ArrayList<Renderable> orderRenderables(ArrayList<Renderable> renderables) {
 		return renderables;
 	}
 	
-	public boolean blocked(Mover mover, int x, int y) {
-		return tiles[y][x].isSolid();
-	}
-	
-	public float getCost(Mover mover, int sx, int sy, int tx, int ty) {
-		return (float) Math.sqrt((sy - sx) ^ 2 + (tx - ty) ^ 2);
-	}
-	
-	public void pathFinderVisited(int x, int y) {
-		visited[y][x] = true;
-	}
-	public boolean visited(int x, int y) {
-		return visited[y][x];
-	}
-	public void clearVisited() {
-		visited = new boolean[this.height][this.width];
-	}
 	public int getWidthInTiles() {
 		return width;
 	}
