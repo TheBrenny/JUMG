@@ -19,7 +19,7 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  2. [x] Compression Algorithm
  3. [x] Frame and Screen implementation
  4. [ ] Graphical User Interface utilities *(will be continued as I go on...)*
- 5. [ ] Heads Up Display simplicity
+ 5. [ ] **Heads Up Display simplicity (currently working on...)**
  6. [x] Engine and cycle system
  7. [x] Sprite Manager
  8. [x] Level Manager
@@ -32,11 +32,12 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  14. [ ] Questing System
  15. [x] Event System
  16. [x] Collision detection
- 17. [ ] **Networking (currently working on...)**
+ 17. [x] Networking
  18. [x] Version control and updating
- 19. [ ] Bulk Debugging Classes
- 20. [ ] Full JavaDocs
- 21. [ ] RELEASE!
+ 19. [ ] Startup Arguments
+ 20. [ ] Bulk Debugging Classes
+ 21. [ ] Full JavaDocs
+ 22. [ ] RELEASE!
 
 ###Who is BrennyTizer?
 BrennyTizer is not a person, it is merely a blog/portfolio of one's work. That person who's work is being collected is Jarod Brennfleck. He is the guy who is constantly working hard to develop programs while achieving good grades at school. Currently a Year 11 student, Jarod has completed a few programs for some classes which he will be releasing soon online! For all the news and updates, check out his website at http://brennytizer.com.au/.

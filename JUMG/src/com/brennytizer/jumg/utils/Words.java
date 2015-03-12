@@ -155,7 +155,7 @@ public class Words {
 	// Similar to python's `String.format(obj...)` method... 
 	public static String insert(String main, Object ... objects) {
 		String ret = "";
-		for(int i = 0; i < main.length() - 2; i++) {
+		for(int i = 0; i < main.length(); i++) {
 			if(main.charAt(i) == '{') {
 				if(i != 0 && main.charAt(i - 1) == '\\') continue;
 				ret += main.substring(0, i);
@@ -165,6 +165,6 @@ public class Words {
 				ret += objects[obj];
 			}
 		}
-		return ret;
+		return ret + main;
 	}
 }
