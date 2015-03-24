@@ -17,7 +17,7 @@ public class LoadData {
 		fi.readData();
 		ArrayList<String> strs = fi.getData();
 		for(String s : strs) {
-			s = s.substring(s.indexOf("$") + 1, s.lastIndexOf("$"));
+			s = s.substring(s.indexOf(SaveData.DATA_TRIGGER) + SaveData.DATA_TRIGGER.length(), s.lastIndexOf(SaveData.DATA_TRIGGER));
 			String[] split = s.split("=", 2);
 			cache.put(split[0], split[1]);
 		}

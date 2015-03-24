@@ -19,7 +19,7 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  2. [x] Compression Algorithm
  3. [x] Frame and Screen implementation
  4. [ ] Graphical User Interface utilities *(will be continued as I go on...)*
- 5. [ ] **Heads Up Display simplicity (currently working on...)**
+ 5. [x] Heads Up Display simplicity
  6. [x] Engine and cycle system
  7. [x] Sprite Manager
  8. [x] Level Manager
@@ -29,13 +29,13 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  12. [x] Entities
  13. [x] Inventory System
  13. [x] Save Game System
- 14. [ ] Questing System
+ 14. [x] Questing System
  15. [x] Event System
  16. [x] Collision detection
  17. [x] Networking
  18. [x] Version control and updating
- 19. [ ] Startup Arguments
- 20. [ ] Bulk Debugging Classes
+ 19. [x] Startup Arguments
+ 20. [ ] **Bulk Debugging Classes (currently working on...)**
  21. [ ] Full JavaDocs
  22. [ ] RELEASE!
 

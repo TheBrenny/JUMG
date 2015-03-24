@@ -1,5 +1,7 @@
 package com.brennytizer.jumg.utils;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
@@ -17,10 +19,14 @@ public class Images {
 	 * The package to retrieve images from.
 	 */
 	public static String IMAGE_PACKAGE = "/com/brennytizer/jumg/utils/";
-	
 	public static BufferedImage TEST_IMAGE;
-	
 	static {
+		Logging.log(LoggingSpice.MILD, "Building test image");
+		TEST_IMAGE = new BufferedImage(1,1,BufferedImage.TYPE_INT_RGB);
+		Graphics2D g = TEST_IMAGE.createGraphics();
+		g.setColor(Color.MAGENTA);
+		g.fillRect(0, 0, 1, 1);
+		g.dispose();
 		Logging.log(LoggingSpice.MILD, "Loading images");
 	}
 	

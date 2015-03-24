@@ -40,7 +40,8 @@ public class Words {
 		word = word.toLowerCase();
 		return word.substring(0, 1).toUpperCase() + word.substring(1);
 	}
-	
+	// Similar to python's object multiplication.
+	// "a" * 10 = "aaaaaaaaaa"
 	public static String multiplty(String word, int amount) {
 		String newWord = "";
 		for(int i = 0; i < amount; i++)

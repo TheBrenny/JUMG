@@ -1,5 +1,7 @@
 package com.brennytizer.jumg.utils;
 
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 import com.brennytizer.jumg.utils.geom.Point2D;
@@ -120,5 +122,13 @@ public class Sprite extends BufferedImage implements PolygonalObject {
 	
 	public Polygon makePolygon() {
 		return new Polygon(getPoints());
+	}
+	
+	public BufferedImage resize(int newWidth, int newHeight) {
+		BufferedImage bi = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g2d = bi.createGraphics();
+		AffineTransform at = AffineTransform.getScaleInstance(newWidth / getWidth(), newHeight / getHeight());
+		g2d.drawRenderedImage(this, at);
+		return bi;
 	}
 }

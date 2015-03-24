@@ -7,6 +7,7 @@ import com.brennytizer.jumg.utils.Renderable;
 import com.brennytizer.jumg.utils.Sprite;
 import com.brennytizer.jumg.utils.geom.Collisions;
 import com.brennytizer.jumg.utils.geom.Point2D;
+import com.brennytizer.jumg.utils.geom.Polygon;
 import com.brennytizer.jumg.utils.geom.PolygonalObject;
 import com.brennytizer.jumg.utils.geom.Rectangle2D;
 
@@ -106,6 +107,10 @@ public abstract class Entity implements Renderable {
 	
 	public Point2D[] getPoints() {
 		return polygon.getPoints();
+	}
+	
+	public Polygon makePolygon() {
+		return new Polygon(getPoints());
 	}
 	
 	public static boolean addEntityToLoaded(Entity entity) {

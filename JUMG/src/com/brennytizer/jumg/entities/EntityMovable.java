@@ -11,6 +11,7 @@ public interface EntityMovable {
 	
 	public void move(AngleSpeed speed);
 	public void move(int direction);
+	public void move(int yAxis, int xAxis);
 	public float getSpeed();
 	public Angle getAngle();
 }

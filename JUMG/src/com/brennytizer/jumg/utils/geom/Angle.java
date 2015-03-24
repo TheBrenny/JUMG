@@ -12,6 +12,10 @@ import java.awt.image.BufferedImage;
  * @author Jarod Brennfleck
  */
 public class Angle {
+	public static final Angle NORTH = new Angle(0);
+	public static final Angle EAST = new Angle(90);
+	public static final Angle SOUTH = new Angle(180);
+	public static final Angle WEST = new Angle(270);
 	public float angle;
 	
 	/**

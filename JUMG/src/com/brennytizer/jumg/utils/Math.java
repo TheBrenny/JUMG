@@ -8,7 +8,6 @@ import com.brennytizer.jumg.utils.geom.PolygonalObject;
 import com.brennytizer.jumg.utils.geom.Rectangle2D;
 
 public class Math {
-	// CLAMPS
 	/**
 	 * @see #clampInt(int, int, int)
 	 */
@@ -88,10 +87,11 @@ public class Math {
 	}
 	
 	public static long random(String s, int modulus) {
-		String fin = "0";
+		String fin = "";
 		long count = Long.parseLong(s) + random(-modulus, modulus);
 		for(int i = 0; i < count; i++)
 			fin += "" + random(0, 9);
+		if(fin.equals("")) fin = "0";
 		return Long.parseLong(fin);
 	}
 	
@@ -109,7 +109,8 @@ public class Math {
 	}
 	
 	public static float random(float min, float max, int decimals) {
-		return Float.parseFloat(random((int) min, (int) max) + "." + random("" + decimals, 0));
+		decimals = absolute(decimals);
+		return Float.parseFloat(random((int) min, (int) max) + "." + (decimals == 0 ? "0" : random("" + decimals, 0)));
 	}
 	
 	public static boolean sameSign(float a, float b) {
@@ -119,6 +120,13 @@ public class Math {
 	public static Point2D getMidPoint(PolygonalObject p) {
 		Rectangle2D r = Collisions.buildAABB(p);
 		return new Point2D(r.width / 2, r.height / 2);
+	}
+	
+	public static int greatestCommonDenominator(int a, int b) {
+		int denom = 1;
+		int tryTo = java.lang.Math.min(absolute(a), absolute(b));
+		for(int i = 2; i < tryTo; i++) if(a % i == 0 && b % i == 0) denom = i;
+		return denom;
 	}
 	
 	public static class Vector2D {

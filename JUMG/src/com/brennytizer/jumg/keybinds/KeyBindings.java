@@ -8,6 +8,14 @@ import com.brennytizer.jumg.utils.Listener;
 
 public class KeyBindings extends Listener {
 	public static ArrayList<Input> inputs = new ArrayList<Input>();
+	public static boolean paused = false;
+	
+	public static void pause(boolean flag) {
+		KeyBindings.paused = flag;
+	}
+	public static boolean isPaused() {
+		return KeyBindings.paused;
+	}
 	
 	public static synchronized ArrayList<Input> getInputs() {
 		return inputs;
@@ -53,7 +61,7 @@ public class KeyBindings extends Listener {
 	
 	public static boolean pressInput(int keyCode, boolean state) {
 		Input i = getInput(keyCode);
-		if(i != null) {
+		if(i != null || isPaused()) {
 			i.press(state);
 			return true;
 		} else return false;
@@ -61,7 +69,7 @@ public class KeyBindings extends Listener {
 	
 	public static boolean pressInput(String keyName, boolean state) {
 		Input i = getInput(keyName);
-		if(i != null) {
+		if(i != null || isPaused()) {
 			i.press(state);
 			return true;
 		} else return false;

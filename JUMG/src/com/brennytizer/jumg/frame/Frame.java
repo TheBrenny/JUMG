@@ -28,6 +28,7 @@ public class Frame {
 	public String title;
 	public Dimension size;
 	public JFrame frame;
+	public Display display;
 	
 	/**
 	 * Initializes a JFrame using a Title to display, and the Size to use.
@@ -80,6 +81,7 @@ public class Frame {
 	 */
 	public Frame addDisplay(Display d) {
 		Logging.log(LoggingSpice.MILD, "Adding display: " + d.getClass().getName());
+		display = d;
 		frame.getContentPane().add(d, BorderLayout.CENTER);
 		return this;
 	}

@@ -1,6 +1,7 @@
 package com.brennytizer.jumg.utils.io;
 
 public class SaveData {
+	public static String DATA_TRIGGER = "..=";
 	public String location;
 	public ObjectSaveable objToSave;
 	
@@ -11,7 +12,7 @@ public class SaveData {
 	
 	public void saveData() {
 		FileIO.FileOutput fo = FileIO.startFileWriter(location);
-		for(String s : objToSave.dataToSave()) fo.appendData(s);
+		for(String s : objToSave.dataToSave()) fo.appendData(DATA_TRIGGER + s + DATA_TRIGGER);
 		fo.writeData();
 	}
 }
