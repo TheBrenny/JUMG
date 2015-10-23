@@ -11,8 +11,11 @@ public abstract class ArgumentOrganizer {
 	public ArgumentOrganizer(String[] args) {
 		ArgumentOrganizer.ARG_ORG_INSTANCE = this;
 		ArgumentOrganizer.organizedArguments = new HashMap<String, String>();
-		setDefaultArguments();
 		this.rawArguments = args;
+	}
+	
+	public void organizeArguments() {
+		setDefaultArguments();
 		collectArgumentData();
 	}
 	
