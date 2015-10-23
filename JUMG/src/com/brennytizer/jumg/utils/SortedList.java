@@ -47,7 +47,7 @@ public class SortedList<E> extends ArrayList<E> {
 		add(0, e);
 	}
 	
-	public void sort(Comparator<E> c) {
+	public void sortList(Comparator<E> c) {
 		try {
 			Collections.sort(this, c);
 		} catch(Exception e) {
