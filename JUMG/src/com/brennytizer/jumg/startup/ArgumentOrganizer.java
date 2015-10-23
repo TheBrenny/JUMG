@@ -2,7 +2,7 @@ package com.brennytizer.jumg.startup;
 
 import java.util.HashMap;
 
-public abstract class ArgumentOrganizer {
+public class ArgumentOrganizer {
 	public static ArgumentOrganizer ARG_ORG_INSTANCE;
 	public static String argumentSplitter = ":";
 	public static HashMap<String, String> organizedArguments;
@@ -16,7 +16,7 @@ public abstract class ArgumentOrganizer {
 		collectArgumentData();
 	}
 	
-	public abstract void setDefaultArguments();
+	public void setDefaultArguments() {}
 	
 	public void collectArgumentData() {
 		for(String s : rawArguments)
