@@ -18,7 +18,7 @@ import java.awt.event.MouseWheelListener;
  * 
  * @author Jarod Brennfleck
  */
-//@formatter:off
+//@form:off
 public class Listener implements KeyListener, MouseListener, MouseMotionListener, MouseWheelListener {
 	public void mouseDragged(MouseEvent e) {}
 	public void mouseMoved(MouseEvent e) {}
@@ -32,4 +32,4 @@ public class Listener implements KeyListener, MouseListener, MouseMotionListener
 	public void keyTyped(KeyEvent e) {}
 	public void mouseWheelMoved(MouseWheelEvent e) {}
 }
-//@formatter:on
+//@form:on

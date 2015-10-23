@@ -29,7 +29,7 @@ As JUMG is in development, it is necessary for a checklist to be made of what ne
  12. [x] Entities
  13. [x] Inventory System
  13. [x] Save Game System
- 14. [x] Questing System
+ 14. [ ] Questing System
  15. [x] Event System
  16. [x] Collision detection
  17. [x] Networking
