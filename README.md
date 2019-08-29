@@ -1,3 +1,5 @@
+> JUMG has been archived! You should take a look at the new and improved JUMG 3.0!
+
 # JUMG ('Jum-Gee')
 ### Java Utilities for Making Games
 <hr>
